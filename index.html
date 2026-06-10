@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>價差盤 — 每日勝率與盤口價差</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0b0e; --panel:#13151b; --panel2:#191c24; --line:#23262f;
+    --ink:#e9e6dd; --dim:#8a8d96; --faint:#5a5d66;
+    --gold:#e7b24c; --green:#4fd08a; --red:#e2615b; --blue:#5aa9e6;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --tc:'Noto Sans TC',sans-serif;
+    --disp:'Bebas Neue',Impact,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--tc);font-size:15px;line-height:1.55}
+  body{background-image:radial-gradient(circle at 18% -10%,#1a1d27 0,transparent 45%),radial-gradient(circle at 100% 0,#15171f 0,transparent 40%);min-height:100vh}
+  ::selection{background:var(--gold);color:#000}
+  .wrap{max-width:880px;margin:0 auto;padding:22px 18px 80px}
+
+  header{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--line);padding-bottom:14px;margin-bottom:6px;flex-wrap:wrap;gap:10px}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .logo{font-family:var(--disp);font-size:46px;letter-spacing:2px;line-height:.8;color:var(--ink)}
+  .logo b{color:var(--gold)}
+  .tagline{font-size:12px;color:var(--faint);letter-spacing:2px}
+  .clock{font-size:12px;color:var(--dim);text-align:right;font-family:var(--mono)}
+  .clock b{color:var(--ink)}
+
+  .status{margin:14px 0;padding:10px 14px;border-radius:8px;font-size:13px;display:flex;align-items:center;gap:10px;border:1px solid var(--line)}
+  .status .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .status.live{background:rgba(79,208,138,.08);border-color:rgba(79,208,138,.35)}
+  .status.live .dot{background:var(--green);box-shadow:0 0 10px var(--green)}
+  .status.demo{background:rgba(226,97,91,.1);border-color:rgba(226,97,91,.45)}
+  .status.demo .dot{background:var(--red);box-shadow:0 0 10px var(--red)}
+  .status.snap{background:rgba(231,178,76,.1);border-color:rgba(231,178,76,.45)}
+  .status.snap .dot{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+  .status.snap .big{color:var(--gold);font-size:14px}
+  .status.loading{background:var(--panel)}
+  .status.loading .dot{background:var(--gold);animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+  .status .big{font-weight:900;font-size:16px;color:var(--red)}
+
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0 6px}
+  .seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{background:transparent;color:var(--dim);border:none;font-family:var(--tc);font-weight:700;font-size:13px;padding:9px 16px;cursor:pointer;letter-spacing:1px;transition:.15s}
+  .seg button.on{background:var(--gold);color:#000}
+  .seg button:not(.on):hover{color:var(--ink);background:var(--panel2)}
+  .btn{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px 14px;font-family:var(--tc);font-size:13px;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:var(--gold);color:var(--gold)}
+  .ctl-label{font-size:11px;color:var(--faint)}
+  .keybox{flex:1;min-width:200px;display:flex;gap:6px;margin-top:6px}
+  .keybox input{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--ink);font-family:var(--mono);font-size:12px;padding:9px 12px}
+  .keybox input:focus{outline:none;border-color:var(--gold)}
+
+  .games{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+  .card{background:linear-gradient(180deg,var(--panel) 0,var(--panel2) 100%);border:1px solid var(--line);border-radius:12px;padding:16px 18px;animation:rise .4s both}
+  .card.value{border-color:rgba(79,208,138,.45);box-shadow:0 0 0 1px rgba(79,208,138,.15)}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .matchup{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+  .team{flex:1}
+  .team .abbr{font-family:var(--disp);font-size:26px;letter-spacing:1px;line-height:.9}
+  .team .zh{font-size:15px;font-weight:700;margin-top:1px}
+  .team .rec{font-size:11px;color:var(--faint);font-family:var(--mono)}
+  .team.home{text-align:right}
+  .vs{text-align:center;flex:none}
+  .vs .at{font-family:var(--disp);font-size:18px;color:var(--dim)}
+  .state{display:block;font-size:10px;letter-spacing:1px;padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--dim);margin-top:4px}
+  .state.live{color:var(--green);border-color:var(--green)}
+  .state.final{color:var(--faint)}
+
+  .bar{height:32px;border-radius:7px;overflow:hidden;display:flex;font-family:var(--disp);font-size:18px;letter-spacing:1px}
+  .bar .a{background:linear-gradient(90deg,#2b3550,#3a4a6e);color:#cfe0ff;display:flex;align-items:center;padding-left:12px}
+  .bar .h{background:linear-gradient(90deg,#5a4a1e,#7a6526);color:#ffe9b0;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;margin-left:auto}
+
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:13px}
+  .metric{background:var(--panel);padding:10px 12px}
+  .metric .lab{font-size:10px;color:var(--faint);letter-spacing:1px;margin-bottom:3px}
+  .metric .val{font-size:14px;font-weight:700;font-family:var(--mono)}
+  .metric .sub{font-size:10px;color:var(--faint)}
+
+  .notes{margin-top:11px;font-size:12px;color:var(--dim);display:flex;flex-direction:column;gap:4px}
+  .notes .row{display:flex;gap:7px;align-items:flex-start}
+  .notes .ic{flex:none;opacity:.8}
+  .notes .inj{color:var(--red)}
+
+  .verdict{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:13px;display:flex;align-items:center;gap:9px;font-weight:500}
+  .verdict.bet{background:rgba(79,208,138,.1);border:1px solid rgba(79,208,138,.4);color:var(--green)}
+  .verdict.skip{background:var(--panel);border:1px solid var(--line);color:var(--dim)}
+  .verdict.noodds{background:var(--panel);border:1px solid var(--line);color:var(--faint)}
+  .verdict .tag{font-weight:900;font-size:13px;padding:2px 8px;border-radius:5px}
+  .verdict.bet .tag{background:var(--green);color:#04130b}
+  .verdict.skip .tag{background:var(--line);color:var(--dim)}
+  .verdict.noodds .tag{background:var(--line);color:var(--faint)}
+
+  .empty{text-align:center;color:var(--dim);padding:60px 20px;font-size:14px}
+  .empty .big{font-family:var(--disp);font-size:40px;color:var(--faint);letter-spacing:2px}
+
+  footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--faint);line-height:1.75}
+  footer h4{font-weight:900;font-size:15px;color:var(--dim);margin:14px 0 6px}
+  footer b{color:var(--dim)}
+  .warn{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">價差<b>盤</b></div>
+      <div class="tagline">每日勝率 · 盤口價差</div>
+    </div>
+    <div class="clock" id="clock"></div>
+  </header>
+
+  <div class="status loading" id="status">
+    <span class="dot"></span><span id="statusText">連線中，正在抓取即時資料…</span>
+  </div>
+
+  <div class="controls">
+    <div class="seg" id="segLeague">
+      <button data-lg="nba" class="on">NBA</button>
+      <button data-lg="mlb">MLB</button>
+    </div>
+    <span class="ctl-label">門檻</span>
+    <div class="seg" id="segThr">
+      <button data-thr="0.01">寬鬆 1%</button>
+      <button data-thr="0.03" class="on">標準 3%</button>
+      <button data-thr="0.05">嚴格 5%</button>
+    </div>
+    <button class="btn" id="refresh">↻ 更新</button>
+  </div>
+  <div class="controls">
+    <div class="keybox">
+      <input id="oddsKey" type="password" placeholder="(選用) 貼上 The Odds API 金鑰才會計算 edge / 下注建議">
+      <button class="btn" id="applyKey">套用</button>
+    </div>
+  </div>
+
+  <div class="games" id="games"></div>
+
+  <footer>
+    <h4>欄位怎麼看</h4>
+    <p><b>勝率</b>：用各隊本季「每場平均得失分差」當實力值（季初比賽少時會自動往中間收，避免被少數比賽灌水），加主場優勢後換算成勝率。</p>
+    <p><b>讓分</b>：由預測分差得出，僅 NBA 參考；棒球先發投手影響太大，未納入故不顯示讓分。</p>
+    <p><b>大小分</b>：雙方平均得失分粗估，<b>信心低</b>。</p>
+    <p><b>EDGE（價差）</b>：模型勝率 − 去抽水後的盤口勝率。<b class="warn">只有 edge ≥ 你設定的門檻才標「值得下注」，其餘一律建議略過。重點是找價差，不是猜贏家。</b></p>
+    <p><b>傷兵 / 先發</b>：盡力從 ESPN 抓取，僅供你「人工判斷要不要相信這個勝率」用——模型本身尚未把球員傷停量化進去（見下）。</p>
+    <h4>關於準確度的老實話</h4>
+    <p>這版模型還沒把球員傷停、輪休、背靠背、先發投手等變因「算進勝率」，那些是下一步。<b class="warn">這是估算工具不是明牌；小樣本會騙人，請先空跑記錄一兩個月、對照實際結果確認校準後再認真下注。賭博有風險。</b></p>
+    <p style="margin-top:8px">資料：ESPN 公開端點（勝率·傷兵·先發）＋ The Odds API（賠率，需自備金鑰）。</p>
+  </footer>
+</div>
+
+<script>
+/* ============ 設定 ============ */
+const LEAGUES = {
+  nba: { path:'basketball/nba', homeAdv:2.5,  sigma:12.0, spread:true,  shrink:6,  oddsSport:'basketball_nba', injuries:true  },
+  mlb: { path:'baseball/mlb',   homeAdv:0.25, sigma:4.5,  spread:false, shrink:20, oddsSport:'baseball_mlb',   injuries:false },
+};
+let EDGE_THRESHOLD = 0.03;
+let LEAGUE = 'nba';
+let ODDS_KEY = '';
+let STATE = null;
+
+/* ============ 中文隊名（以英文暱稱為 key，最穩定）============ */
+const ZH = {
+  nba:{hawks:'老鷹',celtics:'塞爾提克',nets:'籃網',hornets:'黃蜂',bulls:'公牛',cavaliers:'騎士',mavericks:'獨行俠',
+    nuggets:'金塊',pistons:'活塞',warriors:'勇士',rockets:'火箭',pacers:'溜馬',clippers:'快艇',lakers:'湖人',
+    grizzlies:'灰熊',heat:'熱火',bucks:'公鹿',timberwolves:'灰狼',pelicans:'鵜鶘',knicks:'尼克',thunder:'雷霆',
+    magic:'魔術','76ers':'76人',suns:'太陽','trail blazers':'拓荒者',kings:'國王',spurs:'馬刺',raptors:'暴龍',
+    jazz:'爵士',wizards:'巫師'},
+  mlb:{yankees:'洋基','red sox':'紅襪','blue jays':'藍鳥',rays:'光芒',orioles:'金鶯',guardians:'守護者',
+    'white sox':'白襪',tigers:'老虎',royals:'皇家',twins:'雙城',astros:'太空人',athletics:'運動家',mariners:'水手',
+    rangers:'遊騎兵',angels:'天使',dodgers:'道奇',padres:'教士',giants:'巨人',diamondbacks:'響尾蛇',rockies:'落磯',
+    braves:'勇士',marlins:'馬林魚',mets:'大都會',phillies:'費城人',nationals:'國民',brewers:'釀酒人',cardinals:'紅雀',
+    cubs:'小熊',pirates:'海盜',reds:'紅人'}
+};
+function zhName(league,nickname,fallback){
+  if(!nickname) return fallback||'';
+  return ZH[league][nickname.toLowerCase()] || fallback || nickname;
+}
+
+/* ============ 工具 ============ */
+function normCdf(x){
+  const t=1/(1+0.2316419*Math.abs(x)), d=0.3989423*Math.exp(-x*x/2);
+  let p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return x>0?1-p:p;
+}
+const pct=v=>(v*100).toFixed(1)+'%';
+const sj=async u=>{const r=await fetch(u); if(!r.ok) throw new Error(r.status); return r.json();};
+
+/* ============ 抓資料 ============ */
+function statVal(stats,kw){
+  for(const s of (stats||[])){
+    const n=((s.name||'')+' '+(s.type||'')+' '+(s.abbreviation||'')).toLowerCase();
+    if(kw.some(k=>n.includes(k))){const v=(s.value!=null)?s.value:parseFloat(s.displayValue); if(v!=null&&!isNaN(v))return v;}
+  }
+  return null;
+}
+function collectEntries(node,out){
+  if(!node||typeof node!=='object')return;
+  if(node.standings&&Array.isArray(node.standings.entries))out.push(...node.standings.entries);
+  if(Array.isArray(node.entries))out.push(...node.entries);
+  for(const k of ['children','groups'])if(Array.isArray(node[k]))node[k].forEach(c=>collectEntries(c,out));
+}
+async function fetchStrength(cfg){
+  const data=await sj(`https://site.api.espn.com/apis/v2/sports/${cfg.path}/standings`);
+  const entries=[]; collectEntries(data,entries); const map={};
+  for(const e of entries){
+    const abbr=e.team&&e.team.abbreviation; if(!abbr)continue;
+    const gp=statVal(e.stats,['gamesplayed','games played'])||1;
+    const w=statVal(e.stats,['wins']), l=statVal(e.stats,['losses']);
+    let diff=statVal(e.stats,['differential','pointdiff','rundiff']);
+    let pf=statVal(e.stats,['avgpointsfor','pointspergame']), pa=statVal(e.stats,['avgpointsagainst','opp']);
+    const tf=statVal(e.stats,['pointsfor','runsscored']), ta=statVal(e.stats,['pointsagainst','runsallowed']);
+    if(pf==null&&tf!=null)pf=tf/gp; if(pa==null&&ta!=null)pa=ta/gp;
+    let margin=(diff!=null)?diff/gp:((pf!=null&&pa!=null)?pf-pa:null);
+    map[abbr]={margin,pf,pa,gp,w,l};
+  }
+  return map;
+}
+function probableOf(c){
+  try{
+    const p=(c.probables&&c.probables[0])||(c.probable);
+    const a=p&&(p.athlete||p);
+    const nm=a&&(a.displayName||a.shortName||a.name);
+    let era=null;
+    if(p&&p.statistics)era=(p.statistics.find(s=>/era/i.test(s.name||s.abbreviation||''))||{}).displayValue;
+    return nm?{name:nm,era}:null;
+  }catch(e){return null;}
+}
+async function fetchTodayGames(cfg){
+  const data=await sj(`https://site.api.espn.com/apis/site/v2/sports/${cfg.path}/scoreboard`);
+  const out=[];
+  for(const ev of (data.events||[])){
+    try{
+      const comp=ev.competitions[0], state=comp.status.type.state; let home,away;
+      for(const c of comp.competitors){
+        const t={abbr:c.team.abbreviation,nick:c.team.name,name:c.team.displayName||c.team.name,
+                 score:c.score!=null?parseInt(c.score):null,pitcher:probableOf(c)};
+        if(c.homeAway==='home')home=t; else away=t;
+      }
+      if(home&&away)out.push({state,home,away,inj:{}});
+    }catch(e){}
+  }
+  return out;
+}
+async function fetchInjuries(cfg){
+  if(!cfg.injuries)return {};
+  try{
+    const data=await sj(`https://site.api.espn.com/apis/site/v2/sports/${cfg.path}/injuries`);
+    const map={}; const groups=data.injuries||data.items||[];
+    for(const g of groups){
+      const abbr=(g.team&&g.team.abbreviation)||g.abbreviation; if(!abbr)continue;
+      const list=(g.injuries||g.items||[]).map(i=>{
+        const a=i.athlete||{}; return {name:a.displayName||a.shortName||'',status:i.status||(i.type&&i.type.description)||''};
+      }).filter(x=>x.name);
+      if(list.length)map[abbr]=list;
+    }
+    return map;
+  }catch(e){return {};}
+}
+async function fetchOdds(cfg){
+  if(!ODDS_KEY)return {};
+  try{
+    const data=await sj(`https://api.the-odds-api.com/v4/sports/${cfg.oddsSport}/odds?apiKey=${ODDS_KEY}&regions=us&markets=h2h&oddsFormat=decimal`);
+    const map={};
+    for(const g of data){
+      const pr={};
+      for(const bk of (g.bookmakers||[]))for(const m of (bk.markets||[]))if(m.key==='h2h')
+        for(const o of m.outcomes){(pr[o.name]=pr[o.name]||[]).push(o.price);}
+      if(pr[g.home_team]&&pr[g.away_team]){
+        const avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
+        const ih=1/avg(pr[g.home_team]), ia=1/avg(pr[g.away_team]);
+        map[`${g.away_team}@${g.home_team}`]={home:ih/(ih+ia),away:ia/(ih+ia)};
+      }
+    }
+    return map;
+  }catch(e){return {};}
+}
+function matchOdds(odds,away,home){
+  for(const k in odds){const a=k.split('@'),oa=a[0],oh=a[1];
+    if((oh.includes(home.name)||home.name.includes(oh))&&(oa.includes(away.name)||away.name.includes(oa)))return odds[k];}
+  return null;
+}
+
+/* ============ 範例資料（連不到時 fallback）============ */
+const DEMO={
+  nba:[{state:'pre',away:{abbr:'SAS',nick:'Spurs',name:'Spurs'},home:{abbr:'NYK',nick:'Knicks',name:'Knicks'},
+        _s:{a:{margin:3.1,pf:114,pa:110,gp:80,w:50,l:30},h:{margin:5.8,pf:116,pa:108,gp:80,w:55,l:25}},inj:{}}],
+  mlb:[{state:'pre',away:{abbr:'LAD',nick:'Dodgers',name:'Dodgers',pitcher:{name:'示範投手',era:'2.95'}},home:{abbr:'NYY',nick:'Yankees',name:'Yankees',pitcher:{name:'示範投手',era:'3.40'}},
+        _s:{a:{margin:0.9,pf:5.1,pa:4.2,gp:60,w:35,l:25},h:{margin:0.6,pf:4.8,pa:4.2,gp:60,w:33,l:27}},inj:{}}],
+};
+
+/* ============ 真實嵌入快照（連不到即時時顯示，標琥珀色「快照」）============ */
+const EMBED = {"generated": "2026-06-08", "mlb": [{"state": "pre", "away": {"abbr": "SEA", "nick": "Mariners", "name": "Mariners"}, "home": {"abbr": "BAL", "nick": "Orioles", "name": "Orioles"}, "_s": {"a": {"margin": 0.171, "gp": 66, "w": 34, "l": 32}, "h": {"margin": -0.342, "gp": 66, "w": 31, "l": 35}}, "inj": {}}, {"state": "pre", "away": {"abbr": "BOS", "nick": "Red Sox", "name": "Red Sox"}, "home": {"abbr": "TB", "nick": "Rays", "name": "Rays"}, "_s": {"a": {"margin": -0.81, "gp": 63, "w": 27, "l": 36}, "h": {"margin": 1.103, "gp": 62, "w": 37, "l": 25}}, "inj": {}}, {"state": "pre", "away": {"abbr": "NYY", "nick": "Yankees", "name": "Yankees"}, "home": {"abbr": "CLE", "nick": "Guardians", "name": "Guardians"}, "_s": {"a": {"margin": 1.067, "gp": 64, "w": 38, "l": 26}, "h": {"margin": 0.591, "gp": 67, "w": 37, "l": 30}}, "inj": {}}, {"state": "pre", "away": {"abbr": "PHI", "nick": "Phillies", "name": "Phillies"}, "home": {"abbr": "TOR", "nick": "Blue Jays", "name": "Blue Jays"}, "_s": {"a": {"margin": 0.435, "gp": 65, "w": 35, "l": 30}, "h": {"margin": -0.171, "gp": 66, "w": 32, "l": 34}}, "inj": {}}, {"state": "pre", "away": {"abbr": "HOU", "nick": "Astros", "name": "Astros"}, "home": {"abbr": "LAA", "nick": "Angels", "name": "Angels"}, "_s": {"a": {"margin": -0.591, "gp": 67, "w": 30, "l": 37}, "h": {"margin": -1.389, "gp": 66, "w": 25, "l": 41}}, "inj": {}}, {"state": "pre", "away": {"abbr": "CIN", "nick": "Reds", "name": "Reds"}, "home": {"abbr": "SD", "nick": "Padres", "name": "Padres"}, "_s": {"a": {"margin": -0.176, "gp": 64, "w": 31, "l": 33}, "h": {"margin": 0.176, "gp": 64, "w": 33, "l": 31}}, "inj": {}}, {"state": "pre", "away": {"abbr": "WSH", "nick": "Nationals", "name": "Nationals"}, "home": {"abbr": "SF", "nick": "Giants", "name": "Giants"}, "_s": {"a": {"margin": 0.0, "gp": 66, "w": 33, "l": 33}, "h": {"margin": -1.034, "gp": 66, "w": 27, "l": 39}}, "inj": {}}, {"state": "pre", "away": {"abbr": "MIL", "nick": "Brewers", "name": "Brewers"}, "home": {"abbr": "ATH", "nick": "Athletics", "name": "Athletics"}, "_s": {"a": {"margin": 1.552, "gp": 63, "w": 40, "l": 23}, "h": {"margin": -0.26, "gp": 65, "w": 31, "l": 34}}, "inj": {}}], "nba": []};
+
+/* ============ 計算 ============ */
+function shrunk(s,cfg){ if(!s||s.margin==null)return null; return s.margin*(s.gp/(s.gp+cfg.shrink)); }
+function compute(cfg,sA,sH,odds){
+  const mA=shrunk(sA,cfg), mH=shrunk(sH,cfg);
+  if(mA==null||mH==null)return null;
+  const predMargin=(mH-mA)+cfg.homeAdv;
+  const pHome=normCdf(predMargin/cfg.sigma), pAway=1-pHome;
+  const spread=cfg.spread?(predMargin>=0?['home',predMargin]:['away',-predMargin]):null;
+  let edge=null,side=null;
+  if(odds){const eH=pHome-odds.home,eA=pAway-odds.away; if(eH>=eA){edge=eH;side='home';}else{edge=eA;side='away';}}
+  return {pHome,pAway,predMargin,spread,edge,side};
+}
+
+/* ============ 繪製 ============ */
+function render(){
+  if(!STATE)return;
+  const games=STATE.games, cfg=STATE.cfg, mode=STATE.mode;
+  const st=document.getElementById('status'),txt=document.getElementById('statusText');
+  const date=new Date().toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'short'});
+  st.className='status '+(mode==='live'?'live':mode==='snapshot'?'snap':'demo');
+  if(mode==='live') txt.innerHTML=`即時資料 · ${date} · 共 ${games.length} 場`;
+  else if(mode==='snapshot') txt.innerHTML=`<span class="big">📷 內建真實快照（${EMBED.generated} 建立）</span> · 非即時，僅供確認顯示正常，請勿據此下注`;
+  else txt.innerHTML=`<span class="big">⚠ 無法連到即時資料 — 以下為範例，請勿據此下注</span>`;
+
+  const rows=games.map(g=>{
+    const sA=g._s?g._s.a:g._strA, sH=g._s?g._s.h:g._strH;
+    return {g,sA,sH,r:compute(cfg,sA,sH,g._odds)};
+  });
+  rows.sort((x,y)=>{
+    const ex=(x.r&&x.r.edge!=null)?x.r.edge:-9, ey=(y.r&&y.r.edge!=null)?y.r.edge:-9;
+    return ey-ex;
+  });
+
+  const box=document.getElementById('games'); box.innerHTML='';
+  if(!rows.length){box.innerHTML=`<div class="empty"><div class="big">今日無賽事</div>這個聯盟今天沒有排定比賽。</div>`;return;}
+
+  let drawn=0;
+  for(const item of rows){
+    const g=item.g, sA=item.sA, sH=item.sH, r=item.r;
+    if(!r)continue; drawn++;
+    const wA=Math.round(r.pAway*100), wH=100-wA;
+    const azh=zhName(LEAGUE,g.away.nick,g.away.name), hzh=zhName(LEAGUE,g.home.nick,g.home.name);
+    const rec=s=> (s&&s.w!=null&&s.l!=null)?`${s.w}-${s.l}`:'';
+    const stateB=g.state==='in'?'<span class="state live">● 進行中</span>':g.state==='post'?'<span class="state final">已結束</span>':'<span class="state">未開打</span>';
+
+    let total='—';
+    const pf=[sA&&sA.pf,sA&&sA.pa,sH&&sH.pf,sH&&sH.pa];
+    if(pf.every(v=>v!=null))total=((pf[0]+pf[1]+pf[2]+pf[3])/2).toFixed(0);
+
+    let spread='—';
+    if(r.spread){const sd=r.spread[0],v=r.spread[1]; spread=`${sd==='home'?g.home.abbr:g.away.abbr} 讓 ${v.toFixed(1)}`;}
+
+    const notes=[];
+    const ai=g.inj[g.away.abbr]||[], hi=g.inj[g.home.abbr]||[];
+    if(ai.length)notes.push(`<div class="row"><span class="ic inj">⛔</span><span class="inj">${g.away.abbr} 傷停：${ai.slice(0,3).map(x=>x.name).join('、')}${ai.length>3?` 等${ai.length}人`:''}</span></div>`);
+    if(hi.length)notes.push(`<div class="row"><span class="ic inj">⛔</span><span class="inj">${g.home.abbr} 傷停：${hi.slice(0,3).map(x=>x.name).join('、')}${hi.length>3?` 等${hi.length}人`:''}</span></div>`);
+    if(g.away.pitcher)notes.push(`<div class="row"><span class="ic">⚾</span><span>${g.away.abbr} 先發：${g.away.pitcher.name}${g.away.pitcher.era?`（ERA ${g.away.pitcher.era}）`:''}</span></div>`);
+    if(g.home.pitcher)notes.push(`<div class="row"><span class="ic">⚾</span><span>${g.home.abbr} 先發：${g.home.pitcher.name}${g.home.pitcher.era?`（ERA ${g.home.pitcher.era}）`:''}</span></div>`);
+
+    let vClass,vHtml;
+    if(r.edge==null){vClass='noodds';vHtml=`<span class="tag">需賠率</span> 未提供賠率，無法判斷價值（在上方貼金鑰）`;}
+    else if(r.edge>=EDGE_THRESHOLD){const team=r.side==='home'?`${g.home.abbr} ${hzh}`:`${g.away.abbr} ${azh}`;
+      vClass='bet';vHtml=`<span class="tag">值得下注</span> 模型比盤口高 ${pct(r.edge)} → 可考慮下注 <b>${team}</b>`;}
+    else{vClass='skip';vHtml=`<span class="tag">略過</span> 無明顯價值（edge ${pct(r.edge)}）→ 建議略過`;}
+
+    const card=document.createElement('div'); card.className='card'+(vClass==='bet'?' value':'');
+    card.innerHTML=`
+      <div class="matchup">
+        <div class="team away"><div class="abbr">${g.away.abbr}</div><div class="zh">${azh}</div><div class="rec">${rec(sA)}</div></div>
+        <div class="vs"><div class="at">@</div>${stateB}</div>
+        <div class="team home"><div class="abbr">${g.home.abbr}</div><div class="zh">${hzh}</div><div class="rec">${rec(sH)}</div></div>
+      </div>
+      <div class="bar"><div class="a" style="width:${wA}%">${wA}%</div><div class="h" style="width:${wH}%">${wH}%</div></div>
+      <div class="metrics">
+        <div class="metric"><div class="lab">看好</div><div class="val">${r.pHome>=.5?g.home.abbr:g.away.abbr} ${pct(Math.max(r.pHome,r.pAway))}</div></div>
+        <div class="metric"><div class="lab">讓分</div><div class="val">${spread}</div><div class="sub">${cfg.spread?'':'棒球不適用'}</div></div>
+        <div class="metric"><div class="lab">大小分</div><div class="val">${total}</div><div class="sub">粗估·信心低</div></div>
+      </div>
+      ${notes.length?`<div class="notes">${notes.join('')}</div>`:''}
+      <div class="verdict ${vClass}">${vHtml}</div>`;
+    box.appendChild(card);
+  }
+  if(!drawn)box.innerHTML=`<div class="empty"><div class="big">資料不足</div>抓到對戰但缺少隊伍實力資料，稍後再更新。</div>`;
+}
+
+/* ============ 載入 ============ */
+async function tryDataJson(){           // 架站後由每日工作產生 data.json（同源，最穩）
+  try{
+    const d=await sj('data.json');
+    const arr=(d[LEAGUE]||[]);
+    return arr.length?arr:null;
+  }catch(e){return null;}
+}
+async function load(){
+  const cfg=LEAGUES[LEAGUE];
+  document.getElementById('status').className='status loading';
+  document.getElementById('statusText').textContent='連線中，正在抓取即時資料…';
+  document.getElementById('games').innerHTML='';
+
+  // 1) 即時抓 ESPN（架在真網址時最理想）
+  const res=await Promise.all([
+    fetchStrength(cfg).catch(()=>({})),
+    fetchTodayGames(cfg).catch(()=>[]),
+    fetchInjuries(cfg).catch(()=>({})),
+    fetchOdds(cfg).catch(()=>({})),
+  ]);
+  const str=res[0],games=res[1],inj=res[2],odds=res[3];
+  if(games.length && Object.keys(str).length){
+    for(const g of games){
+      g._strA=str[g.away.abbr]; g._strH=str[g.home.abbr];
+      g.inj={[g.away.abbr]:inj[g.away.abbr]||[],[g.home.abbr]:inj[g.home.abbr]||[]};
+      g._odds=matchOdds(odds,g.away,g.home);
+    }
+    STATE={games:games,cfg:cfg,mode:'live'}; render(); return;
+  }
+  // 2) 同源 data.json（架站＋每日工作自動更新時）
+  const dj=await tryDataJson();
+  if(dj){ STATE={games:dj.map(g=>({...g,_odds:null})),cfg:cfg,mode:'live'}; render(); return; }
+  // 3) 內建真實快照
+  if((EMBED[LEAGUE]||[]).length){ STATE={games:EMBED[LEAGUE].map(g=>({...g,_odds:null})),cfg:cfg,mode:'snapshot'}; render(); return; }
+  // 4) 最後才用範例
+  STATE={games:DEMO[LEAGUE].map(g=>({...g,_odds:null})),cfg:cfg,mode:'demo'}; render();
+}
+
+/* ============ UI ============ */
+document.getElementById('segLeague').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  [...e.currentTarget.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');LEAGUE=b.dataset.lg;load();});
+document.getElementById('segThr').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  [...e.currentTarget.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');EDGE_THRESHOLD=parseFloat(b.dataset.thr);render();});
+document.getElementById('refresh').addEventListener('click',load);
+document.getElementById('applyKey').addEventListener('click',()=>{ODDS_KEY=document.getElementById('oddsKey').value.trim();load();});
+function tick(){const d=new Date();document.getElementById('clock').innerHTML=`<b>${d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'})}</b><br>${d.toLocaleDateString('zh-TW')}`;}
+tick();setInterval(tick,30000);
+load();
+</script>
+</body>
+</html>
