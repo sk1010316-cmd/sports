@@ -8,12 +8,16 @@ build_data.py — 每天由 GitHub Actions 執行，產生網站要讀的 data.j
 GitHub 會每天自動跑，你不用管。
 """
 import os, json, datetime as dt
+from statistics import NormalDist
 import requests
 
 LEAGUES = {
     "nba": {"path": "basketball/nba", "homeAdv": 2.5,  "sigma": 12.0, "shrink": 6,  "oddsSport": "basketball_nba", "injuries": True},
     "mlb": {"path": "baseball/mlb",   "homeAdv": 0.25, "sigma": 4.5,  "shrink": 20, "oddsSport": "baseball_mlb",   "injuries": False},
 }
+# 往國際盤靠的權重：0=完全信自己的模型(會清一色推受讓), 1=完全照國際盤。
+# 球季早期模型很弱，靠國際盤多一點，勝率才會明確、不再亂推冷門。想讓模型更有主見就調小。
+MARKET_BLEND = 0.80
 UA = {"User-Agent": "Mozilla/5.0"}
 
 
@@ -264,6 +268,8 @@ def build_league(lg):
 
     if lg == "mlb":
         adjust_for_pitchers(out)   # 先發投手要在算 pick 之前先修正好 margin
+    for item in out:
+        item["pre"] = compute_pick(item, cfg)   # 混合後的勝率/讓分/edge，網站直接用這個
     return out
 
 
@@ -286,17 +292,26 @@ def _shrunk(s, cfg):
 
 
 def compute_pick(game, cfg):
-    """重現網站的算法：算出勝率、預測分差、看好方、edge、讓分傾向。"""
+    """算出勝率、預測分差、看好方、edge、讓分傾向。
+    若有國際盤，會把模型勝率往盤口靠（MARKET_BLEND），避免球季早期模型太平、清一色推受讓。"""
     mA = _shrunk(game["_s"].get("a"), cfg)
     mH = _shrunk(game["_s"].get("h"), cfg)
     if mA is None or mH is None:
         return None
-    pred = (mH - mA) + cfg["homeAdv"]
-    p_home = _normcdf(pred / cfg["sigma"])
+    pred_model = (mH - mA) + cfg["homeAdv"]
+    p_model = _normcdf(pred_model / cfg["sigma"])
+    od = game.get("_odds")
+    blended = False
+    if od and od.get("home") is not None:
+        p_home = MARKET_BLEND * od["home"] + (1 - MARKET_BLEND) * p_model
+        blended = True
+    else:
+        p_home = p_model
+    p_home = min(max(p_home, 0.02), 0.98)
+    pred = cfg["sigma"] * NormalDist().inv_cdf(p_home)     # 由混合後的勝率回推分差，讓讓分/比分一致
     pick_su = "home" if p_home >= 0.5 else "away"
     edge = edge_side = None
-    od = game.get("_odds")
-    if od:
+    if od and od.get("home") is not None:
         eH, eA = p_home - od["home"], (1 - p_home) - od["away"]
         edge, edge_side = (eH, "home") if eH >= eA else (eA, "away")
     spread_home = ats = None
@@ -305,6 +320,7 @@ def compute_pick(game, cfg):
         spread_home = mk["spreadHome"]
         ats = "home" if (pred + spread_home) >= 0 else "away"
     return {"pHome": round(p_home, 4), "predMargin": round(pred, 3), "pickSU": pick_su,
+            "blended": blended,
             "edge": round(edge, 4) if edge is not None else None, "edgeSide": edge_side,
             "isValue": bool(edge is not None and edge >= 0.03),
             "spreadHome": spread_home, "atsLean": ats}
@@ -361,7 +377,7 @@ def log_predictions(lg, cfg, out, hist):
         key = f"{lg}:{g['id']}"
         if key in hist:
             continue
-        pick = compute_pick(g, cfg)
+        pick = g.get("pre") or compute_pick(g, cfg)
         if not pick:
             continue
         rec = {"lg": lg, "date": g.get("date"), "start": g.get("start"),
