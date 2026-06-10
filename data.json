@@ -1,6 +1,6 @@
 {
- "generated": "2026-06-10T12:36+08:00",
- "model": "power-rating-v1",
+ "generated": "2026-06-10T15:05+08:00",
+ "model": "power-rating+pitcher-v2",
  "nba": [
   {
    "state": "pre",
@@ -39,8 +39,8 @@
     "NY": []
    },
    "_odds": {
-    "home": 0.5381150771309536,
-    "away": 0.4618849228690463
+    "home": 0.5413669064748201,
+    "away": 0.4586330935251798
    },
    "market": {
     "spreadHome": -2.5,
@@ -58,7 +58,8 @@
     "name": "Seattle Mariners",
     "pitcher": {
      "name": "Logan Gilbert",
-     "era": "3.62"
+     "era": "3.62・已計入",
+     "eraNum": 3.62
     }
    },
    "home": {
@@ -67,25 +68,28 @@
     "name": "Baltimore Orioles",
     "pitcher": {
      "name": "Trevor Rogers",
-     "era": "6.15"
+     "era": "6.15・已計入",
+     "eraNum": 6.15
     }
    },
    "_s": {
     "a": {
-     "margin": 0.007,
+     "margin": 0.132,
      "pf": 4.26,
      "pa": 3.78,
      "gp": 68,
      "w": 5,
-     "l": 4
+     "l": 4,
+     "pAdj": 0.12
     },
     "h": {
-     "margin": -0.007,
+     "margin": -1.274,
      "pf": 4.66,
      "pa": 5.18,
      "gp": 68,
      "w": 2,
-     "l": 2
+     "l": 2,
+     "pAdj": -1.27
     }
    },
    "inj": {
@@ -93,8 +97,8 @@
     "BAL": []
    },
    "_odds": {
-    "home": 0.4671403197158081,
-    "away": 0.532859680284192
+    "home": 0.467760180995475,
+    "away": 0.532239819004525
    },
    "market": {
     "spreadHome": 1.5,
@@ -110,7 +114,8 @@
     "name": "Arizona Diamondbacks",
     "pitcher": {
      "name": "Zac Gallen",
-     "era": "5.43"
+     "era": "5.43・已計入",
+     "eraNum": 5.43
     }
    },
    "home": {
@@ -119,25 +124,28 @@
     "name": "Miami Marlins",
     "pitcher": {
      "name": "Max Meyer",
-     "era": "2.85"
+     "era": "2.85・已計入",
+     "eraNum": 2.85
     }
    },
    "_s": {
     "a": {
-     "margin": -0.003,
+     "margin": -0.874,
      "pf": 4.38,
      "pa": 4.59,
      "gp": 66,
      "w": 2,
-     "l": 4
+     "l": 4,
+     "pAdj": -0.87
     },
     "h": {
-     "margin": -0.003,
+     "margin": 0.545,
      "pf": 4.27,
      "pa": 4.51,
      "gp": 67,
      "w": 1,
-     "l": 3
+     "l": 3,
+     "pAdj": 0.55
     }
    },
    "inj": {
@@ -145,8 +153,8 @@
     "MIA": []
    },
    "_odds": {
-    "home": 0.5004983802641415,
-    "away": 0.4995016197358585
+    "home": 0.5005104934770277,
+    "away": 0.4994895065229722
    },
    "market": {
     "spreadHome": -1.5,
@@ -162,7 +170,8 @@
     "name": "Boston Red Sox",
     "pitcher": {
      "name": "Payton Tolle",
-     "era": "2.70"
+     "era": "2.70・已計入",
+     "eraNum": 2.7
     }
    },
    "home": {
@@ -171,25 +180,28 @@
     "name": "Tampa Bay Rays",
     "pitcher": {
      "name": "Nick Martinez",
-     "era": "2.43"
+     "era": "2.43・已計入",
+     "eraNum": 2.43
     }
    },
    "_s": {
     "a": {
-     "margin": -0.003,
+     "margin": 0.628,
      "pf": 3.89,
      "pa": 4.08,
      "gp": 65,
      "w": 1,
-     "l": 3
+     "l": 3,
+     "pAdj": 0.63
     },
     "h": {
-     "margin": 0.002,
+     "margin": 0.781,
      "pf": 4.53,
      "pa": 4.38,
      "gp": 64,
      "w": 5,
-     "l": 4
+     "l": 4,
+     "pAdj": 0.78
     }
    },
    "inj": {
@@ -197,8 +209,8 @@
     "TB": []
    },
    "_odds": {
-    "home": 0.566722429545747,
-    "away": 0.433277570454253
+    "home": 0.5749072356215214,
+    "away": 0.42509276437847865
    },
    "market": {
     "spreadHome": -1.4,
@@ -214,7 +226,8 @@
     "name": "Los Angeles Dodgers",
     "pitcher": {
      "name": "Eric Lauer",
-     "era": "5.47"
+     "era": "5.47・已計入",
+     "eraNum": 5.47
     }
    },
    "home": {
@@ -223,25 +236,28 @@
     "name": "Pittsburgh Pirates",
     "pitcher": {
      "name": "Paul Skenes",
-     "era": "2.84"
+     "era": "2.84・已計入",
+     "eraNum": 2.84
     }
    },
    "_s": {
     "a": {
-     "margin": 0.031,
+     "margin": -0.862,
      "pf": 5.33,
      "pa": 3.21,
      "gp": 67,
      "w": 0,
-     "l": 0
+     "l": 0,
+     "pAdj": -0.89
     },
     "h": {
-     "margin": 0.004,
+     "margin": 0.558,
      "pf": 5.01,
      "pa": 4.7,
      "gp": 67,
      "w": 3,
-     "l": 6
+     "l": 6,
+     "pAdj": 0.55
     }
    },
    "inj": {
@@ -249,8 +265,8 @@
     "PIT": []
    },
    "_odds": {
-    "home": 0.36293155663234405,
-    "away": 0.637068443367656
+    "home": 0.3617324561403509,
+    "away": 0.6382675438596491
    },
    "market": {
     "spreadHome": 1.5,
@@ -266,7 +282,8 @@
     "name": "Minnesota Twins",
     "pitcher": {
      "name": "Taj Bradley",
-     "era": "4.02"
+     "era": "4.02・已計入",
+     "eraNum": 4.02
     }
    },
    "home": {
@@ -275,25 +292,28 @@
     "name": "Detroit Tigers",
     "pitcher": {
      "name": "Troy Melton",
-     "era": "2.81"
+     "era": "2.81・已計入",
+     "eraNum": 2.81
     }
    },
    "_s": {
     "a": {
-     "margin": -0.007,
+     "margin": -0.102,
      "pf": 4.59,
      "pa": 5.06,
      "gp": 68,
      "w": 2,
-     "l": 2
+     "l": 2,
+     "pAdj": -0.1
     },
     "h": {
-     "margin": -0.004,
+     "margin": 0.566,
      "pf": 4.03,
      "pa": 4.3,
      "gp": 67,
      "w": 0,
-     "l": 5
+     "l": 5,
+     "pAdj": 0.57
     }
    },
    "inj": {
@@ -301,12 +321,12 @@
     "DET": []
    },
    "_odds": {
-    "home": 0.5977552498189717,
-    "away": 0.40224475018102834
+    "home": 0.6016036381043561,
+    "away": 0.3983963618956439
    },
    "market": {
     "spreadHome": -1.5,
-    "total": 9.5,
+    "total": 9.2,
     "book": "國際均盤"
    }
   },
@@ -318,7 +338,8 @@
     "name": "New York Yankees",
     "pitcher": {
      "name": "Gerrit Cole",
-     "era": "2.45"
+     "era": "2.45・已計入",
+     "eraNum": 2.45
     }
    },
    "home": {
@@ -327,25 +348,28 @@
     "name": "Cleveland Guardians",
     "pitcher": {
      "name": "Slade Cecconi",
-     "era": "4.83"
+     "era": "4.83・已計入",
+     "eraNum": 4.83
     }
    },
    "_s": {
     "a": {
-     "margin": 0.023,
+     "margin": 0.791,
      "pf": 5.06,
      "pa": 3.56,
      "gp": 66,
      "w": 1,
-     "l": 3
+     "l": 3,
+     "pAdj": 0.77
     },
     "h": {
-     "margin": -0.001,
+     "margin": -0.542,
      "pf": 4.04,
      "pa": 4.07,
      "gp": 69,
      "w": 2,
-     "l": 3
+     "l": 3,
+     "pAdj": -0.54
     }
    },
    "inj": {
@@ -353,8 +377,8 @@
     "CLE": []
    },
    "_odds": {
-    "home": 0.5149679258731291,
-    "away": 0.4850320741268709
+    "home": 0.5154779453452771,
+    "away": 0.48452205465472276
    },
    "market": {
     "spreadHome": -1.5,
@@ -370,7 +394,8 @@
     "name": "Philadelphia Phillies",
     "pitcher": {
      "name": "Zack Wheeler",
-     "era": "2.22"
+     "era": "2.22・已計入",
+     "eraNum": 2.22
     }
    },
    "home": {
@@ -379,25 +404,28 @@
     "name": "Toronto Blue Jays",
     "pitcher": {
      "name": "Dylan Cease",
-     "era": "2.91"
+     "era": "2.91・已計入",
+     "eraNum": 2.91
     }
    },
    "_s": {
     "a": {
-     "margin": -0.004,
+     "margin": 0.891,
      "pf": 4.01,
      "pa": 4.27,
      "gp": 67,
      "w": 4,
-     "l": 3
+     "l": 3,
+     "pAdj": 0.89
     },
     "h": {
-     "margin": -0.003,
+     "margin": 0.512,
      "pf": 4.07,
      "pa": 4.29,
      "gp": 68,
      "w": 4,
-     "l": 3
+     "l": 3,
+     "pAdj": 0.52
     }
    },
    "inj": {
@@ -405,8 +433,8 @@
     "TOR": []
    },
    "_odds": {
-    "home": 0.4270909534259937,
-    "away": 0.5729090465740063
+    "home": 0.42558625493382857,
+    "away": 0.5744137450661713
    },
    "market": {
     "spreadHome": 1.5,
@@ -422,7 +450,8 @@
     "name": "St. Louis Cardinals",
     "pitcher": {
      "name": "Dustin May",
-     "era": "4.21"
+     "era": "4.21・已計入",
+     "eraNum": 4.21
     }
    },
    "home": {
@@ -431,25 +460,28 @@
     "name": "New York Mets",
     "pitcher": {
      "name": "Freddy Peralta",
-     "era": "4.04"
+     "era": "4.04・已計入",
+     "eraNum": 4.04
     }
    },
    "_s": {
     "a": {
-     "margin": 0.002,
+     "margin": -0.198,
      "pf": 4.45,
      "pa": 4.38,
      "gp": 64,
      "w": 7,
-     "l": 2
+     "l": 2,
+     "pAdj": -0.2
     },
     "h": {
-     "margin": -0.003,
+     "margin": -0.109,
      "pf": 4.02,
      "pa": 4.2,
      "gp": 66,
      "w": 7,
-     "l": 5
+     "l": 5,
+     "pAdj": -0.11
     }
    },
    "inj": {
@@ -457,8 +489,8 @@
     "NYM": []
    },
    "_odds": {
-    "home": 0.5492072170585018,
-    "away": 0.4507927829414981
+    "home": 0.5505459668897499,
+    "away": 0.4494540331102502
    },
    "market": {
     "spreadHome": -1.5,
@@ -474,7 +506,8 @@
     "name": "Atlanta Braves",
     "pitcher": {
      "name": "Grant Holmes",
-     "era": "4.05"
+     "era": "4.05・已計入",
+     "eraNum": 4.05
     }
    },
    "home": {
@@ -483,25 +516,28 @@
     "name": "Chicago White Sox",
     "pitcher": {
      "name": "Brandon Eisert",
-     "era": "4.30"
+     "era": "4.30・已計入",
+     "eraNum": 4.3
     }
    },
    "_s": {
     "a": {
-     "margin": 0.025,
+     "margin": -0.087,
      "pf": 5.21,
      "pa": 3.49,
      "gp": 67,
      "w": 2,
-     "l": 3
+     "l": 3,
+     "pAdj": -0.11
     },
     "h": {
-     "margin": 0.002,
+     "margin": -0.247,
      "pf": 4.79,
      "pa": 4.65,
      "gp": 66,
      "w": 5,
-     "l": 4
+     "l": 4,
+     "pAdj": -0.25
     }
    },
    "inj": {
@@ -509,8 +545,8 @@
     "CHW": []
    },
    "_odds": {
-    "home": 0.416929420325006,
-    "away": 0.583070579674994
+    "home": 0.4147438855560682,
+    "away": 0.5852561144439318
    },
    "market": {
     "spreadHome": 1.5,
@@ -526,7 +562,8 @@
     "name": "Texas Rangers",
     "pitcher": {
      "name": "Nathan Eovaldi",
-     "era": "4.26"
+     "era": "4.26・已計入",
+     "eraNum": 4.26
     }
    },
    "home": {
@@ -535,25 +572,28 @@
     "name": "Kansas City Royals",
     "pitcher": {
      "name": "Stephen Kolek",
-     "era": "3.14"
+     "era": "3.14・已計入",
+     "eraNum": 3.14
     }
    },
    "_s": {
     "a": {
-     "margin": 0.003,
+     "margin": -0.224,
      "pf": 4.02,
      "pa": 3.83,
      "gp": 66,
      "w": 1,
-     "l": 0
+     "l": 0,
+     "pAdj": -0.23
     },
     "h": {
-     "margin": -0.01,
+     "margin": 0.379,
      "pf": 3.93,
      "pa": 4.61,
      "gp": 67,
      "w": 3,
-     "l": 3
+     "l": 3,
+     "pAdj": 0.39
     }
    },
    "inj": {
@@ -561,8 +601,8 @@
     "KC": []
    },
    "_odds": {
-    "home": 0.4733308466989929,
-    "away": 0.526669153301007
+    "home": 0.47292333214835874,
+    "away": 0.5270766678516412
    },
    "market": {
     "spreadHome": 1.5,
@@ -578,7 +618,8 @@
     "name": "Chicago Cubs",
     "pitcher": {
      "name": "Colin Rea",
-     "era": "5.19"
+     "era": "5.19・已計入",
+     "eraNum": 5.19
     }
    },
    "home": {
@@ -587,25 +628,28 @@
     "name": "Colorado Rockies",
     "pitcher": {
      "name": "Tomoyuki Sugano",
-     "era": "4.08"
+     "era": "4.08・已計入",
+     "eraNum": 4.08
     }
    },
    "_s": {
     "a": {
-     "margin": 0.0,
+     "margin": -0.739,
      "pf": 4.57,
      "pa": 4.58,
      "gp": 67,
      "w": 5,
-     "l": 4
+     "l": 4,
+     "pAdj": -0.74
     },
     "h": {
-     "margin": -0.022,
+     "margin": -0.15,
      "pf": 4.34,
      "pa": 5.76,
      "gp": 67,
      "w": 2,
-     "l": 2
+     "l": 2,
+     "pAdj": -0.13
     }
    },
    "inj": {
@@ -613,8 +657,8 @@
     "COL": []
    },
    "_odds": {
-    "home": 0.40122272836250306,
-    "away": 0.5987772716374968
+    "home": 0.3977453882942382,
+    "away": 0.6022546117057619
    },
    "market": {
     "spreadHome": 1.5,
@@ -630,7 +674,8 @@
     "name": "Houston Astros",
     "pitcher": {
      "name": "Kai-Wei Teng",
-     "era": "3.06"
+     "era": "3.71・已計入",
+     "eraNum": 3.71
     }
    },
    "home": {
@@ -639,25 +684,28 @@
     "name": "Los Angeles Angels",
     "pitcher": {
      "name": "Walbert Urena",
-     "era": "2.44"
+     "era": "2.44・已計入",
+     "eraNum": 2.44
     }
    },
    "_s": {
     "a": {
-     "margin": -0.009,
+     "margin": 0.066,
      "pf": 4.54,
      "pa": 5.07,
      "gp": 69,
      "w": 3,
-     "l": 3
+     "l": 3,
+     "pAdj": 0.08
     },
     "h": {
-     "margin": -0.009,
+     "margin": 0.765,
      "pf": 4.49,
      "pa": 5.12,
      "gp": 68,
      "w": 2,
-     "l": 6
+     "l": 6,
+     "pAdj": 0.77
     }
    },
    "inj": {
@@ -665,8 +713,8 @@
     "LAA": []
    },
    "_odds": {
-    "home": 0.5262539184952978,
-    "away": 0.4737460815047021
+    "home": 0.5236005692599621,
+    "away": 0.476399430740038
    },
    "market": {
     "spreadHome": -1.5,
@@ -675,14 +723,15 @@
    }
   },
   {
-   "state": "in",
+   "state": "post",
    "away": {
     "abbr": "CIN",
     "nick": "Reds",
     "name": "Cincinnati Reds",
     "pitcher": {
      "name": "Chase Burns",
-     "era": "2.05"
+     "era": "2.14・已計入",
+     "eraNum": 2.14
     }
    },
    "home": {
@@ -691,25 +740,28 @@
     "name": "San Diego Padres",
     "pitcher": {
      "name": "Lucas Giolito",
-     "era": "4.86"
+     "era": "4.35・已計入",
+     "eraNum": 4.35
     }
    },
    "_s": {
     "a": {
-     "margin": -0.012,
-     "pf": 4.26,
-     "pa": 5.11,
-     "gp": 65,
-     "w": 5,
-     "l": 3
+     "margin": 0.927,
+     "pf": 4.27,
+     "pa": 5.08,
+     "gp": 66,
+     "w": 6,
+     "l": 3,
+     "pAdj": 0.94
     },
     "h": {
-     "margin": -0.003,
-     "pf": 3.8,
-     "pa": 4.02,
-     "gp": 65,
+     "margin": -0.28,
+     "pf": 3.79,
+     "pa": 4.03,
+     "gp": 66,
      "w": 2,
-     "l": 0
+     "l": 1,
+     "pAdj": -0.28
     }
    },
    "inj": {
@@ -717,8 +769,8 @@
     "SD": []
    },
    "_odds": {
-    "home": 0.5955177372962608,
-    "away": 0.40448226270373927
+    "home": 0.5988153548240119,
+    "away": 0.4011846451759882
    },
    "market": {
     "spreadHome": -1.5,
@@ -727,14 +779,15 @@
    }
   },
   {
-   "state": "in",
+   "state": "post",
    "away": {
     "abbr": "WSH",
     "nick": "Nationals",
     "name": "Washington Nationals",
     "pitcher": {
      "name": "Andrew Alvarez",
-     "era": "3.54"
+     "era": "3.70・已計入",
+     "eraNum": 3.7
     }
    },
    "home": {
@@ -743,25 +796,28 @@
     "name": "San Francisco Giants",
     "pitcher": {
      "name": "Adrian Houser",
-     "era": "5.49"
+     "era": "5.54・已計入",
+     "eraNum": 5.54
     }
    },
    "_s": {
     "a": {
-     "margin": 0.001,
-     "pf": 5.31,
-     "pa": 5.24,
-     "gp": 67,
+     "margin": 0.082,
+     "pf": 5.32,
+     "pa": 5.21,
+     "gp": 68,
      "w": 4,
-     "l": 5
+     "l": 5,
+     "pAdj": 0.08
     },
     "h": {
-     "margin": -0.01,
-     "pf": 4.1,
-     "pa": 4.84,
-     "gp": 67,
+     "margin": -0.943,
+     "pf": 4.09,
+     "pa": 4.85,
+     "gp": 68,
      "w": 3,
-     "l": 3
+     "l": 3,
+     "pAdj": -0.93
     }
    },
    "inj": {
@@ -769,8 +825,8 @@
     "SF": []
    },
    "_odds": {
-    "home": 0.5299590621510979,
-    "away": 0.4700409378489022
+    "home": 0.5272555279649993,
+    "away": 0.47274447203500064
    },
    "market": {
     "spreadHome": -1.5,
@@ -779,14 +835,15 @@
    }
   },
   {
-   "state": "in",
+   "state": "post",
    "away": {
     "abbr": "MIL",
     "nick": "Brewers",
     "name": "Milwaukee Brewers",
     "pitcher": {
      "name": "Robert Gasser",
-     "era": "4.73"
+     "era": "6.38・已計入",
+     "eraNum": 6.38
     }
    },
    "home": {
@@ -795,25 +852,28 @@
     "name": "Athletics",
     "pitcher": {
      "name": "J.T. Ginn",
-     "era": "2.74"
+     "era": "3.15・已計入",
+     "eraNum": 3.15
     }
    },
    "_s": {
     "a": {
-     "margin": 0.027,
-     "pf": 5.38,
-     "pa": 3.72,
-     "gp": 64,
+     "margin": -1.368,
+     "pf": 5.37,
+     "pa": 3.77,
+     "gp": 65,
      "w": 5,
-     "l": 2
+     "l": 2,
+     "pAdj": -1.39
     },
     "h": {
-     "margin": -0.011,
-     "pf": 4.35,
-     "pa": 5.02,
-     "gp": 66,
+     "margin": 0.374,
+     "pf": 4.39,
+     "pa": 5.01,
+     "gp": 67,
      "w": 5,
-     "l": 3
+     "l": 3,
+     "pAdj": 0.38
     }
    },
    "inj": {
@@ -821,8 +881,8 @@
     "ATH": []
    },
    "_odds": {
-    "home": 0.4917127071823204,
-    "away": 0.5082872928176795
+    "home": 0.4968586387434555,
+    "away": 0.5031413612565445
    },
    "market": {
     "spreadHome": 1.5,
