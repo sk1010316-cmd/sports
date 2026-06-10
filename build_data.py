@@ -86,7 +86,11 @@ def probable(c):
         for s in (p.get("statistics") or []):
             if "era" in ((s.get("name") or s.get("abbreviation") or "").lower()):
                 era = s.get("displayValue")
-        return {"name": nm, "era": era} if nm else None
+        era_num = None
+        if era is not None:
+            try: era_num = float(str(era).split()[0])
+            except (TypeError, ValueError): era_num = None
+        return {"name": nm, "era": era, "eraNum": era_num} if nm else None
     except Exception:
         return None
 
@@ -195,6 +199,30 @@ def match_odds(odds, away_name, home_name):
     return None
 
 
+def adjust_for_pitchers(out):
+    """MLB：用先發投手 ERA 修正當日球隊實力。
+    基準＝今日所有先發的平均 ERA；某隊先發比平均強（ERA 低）→ 該隊 margin 往上加，
+    幅度有上限避免被極端小樣本 ERA 灌爆。抓不到 ERA 的那一隊不調整。"""
+    eras = []
+    for item in out:
+        for side in ("away", "home"):
+            p = item[side].get("pitcher")
+            if p and p.get("eraNum") is not None:
+                eras.append(p["eraNum"])
+    base = (sum(eras) / len(eras)) if len(eras) >= 4 else 4.10   # 今日先發平均，太少就用聯盟概值
+    K, CAP = 0.55, 1.5                                            # 換算係數與單場上限（單位：失分/場）
+    for item in out:
+        for skey, side in (("a", "away"), ("h", "home")):
+            p = item[side].get("pitcher")
+            s = item["_s"].get(skey)
+            if p and p.get("eraNum") is not None and s and s.get("margin") is not None:
+                adj = max(-CAP, min(CAP, (base - p["eraNum"]) * K))
+                s["margin"] = round(s["margin"] + adj, 3)
+                s["pAdj"] = round(adj, 2)
+                if p.get("era"):
+                    p["era"] = f"{p['era']}・已計入"   # 在網站先發那行標示已納入
+
+
 def build_league(lg):
     cfg = LEAGUES[lg]
     print(f"[{lg}] 抓取中…")
@@ -216,12 +244,16 @@ def build_league(lg):
             "market": ({"spreadHome": od["spreadHome"], "total": od["total"], "book": od["book"]}
                        if od else None),
         })
+
+    # MLB：把先發投手 ERA 納入當日球隊實力（先發越強→球隊讓分/勝率往上修）
+    if lg == "mlb":
+        adjust_for_pitchers(out)
     return out
 
 
 def main():
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=8)))   # 台灣時間
-    data = {"generated": now.isoformat(timespec="minutes"), "model": "power-rating-v1"}
+    data = {"generated": now.isoformat(timespec="minutes"), "model": "power-rating+pitcher-v2"}
     for lg in LEAGUES:
         try:
             data[lg] = build_league(lg)
