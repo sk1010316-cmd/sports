@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -86,6 +87,14 @@
   .notes .row{display:flex;gap:7px;align-items:flex-start}
   .notes .ic{flex:none;opacity:.8}
   .notes .inj{color:var(--red)}
+  .proj{margin-top:11px;font-size:12px;color:var(--dim);font-family:var(--mono);display:flex;gap:14px;flex-wrap:wrap}
+  .proj b{color:var(--ink)}
+  .proj .chi{color:var(--green)} .proj .cmd{color:var(--gold)} .proj .clo{color:var(--faint)}
+  .mkt{margin-top:12px;padding:11px 14px;border-radius:8px;background:var(--panel);border:1px solid var(--line);font-size:13px}
+  .mkt.val{border-color:rgba(231,178,76,.55);background:rgba(231,178,76,.08)}
+  .mkt .hd{font-size:10px;color:var(--faint);letter-spacing:1px;margin-bottom:6px}
+  .mkt .ln{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .mkt b{color:var(--ink);font-family:var(--mono)} .mkt .lean{color:var(--gold);font-weight:700}
 
   .verdict{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:13px;display:flex;align-items:center;gap:9px;font-weight:500}
   .verdict.bet{background:rgba(79,208,138,.1);border:1px solid rgba(79,208,138,.4);color:var(--green)}
@@ -164,6 +173,8 @@ let EDGE_THRESHOLD = 0.03;
 let LEAGUE = 'nba';
 let ODDS_KEY = '';
 let STATE = null;
+let DATA_TIME = null;
+const AVG_TOTAL = {nba:228, mlb:8.6};   // 預測比分用的聯盟平均總分基準
 
 /* ============ 中文隊名（以英文暱稱為 key，最穩定）============ */
 const ZH = {
@@ -317,8 +328,12 @@ function render(){
   const games=STATE.games, cfg=STATE.cfg, mode=STATE.mode;
   const st=document.getElementById('status'),txt=document.getElementById('statusText');
   const date=new Date().toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'short'});
-  st.className='status '+(mode==='live'?'live':mode==='snapshot'?'snap':'demo');
-  if(mode==='live') txt.innerHTML=`即時資料 · ${date} · 共 ${games.length} 場`;
+  st.className='status '+(mode==='live'||mode==='json'?'live':mode==='snapshot'?'snap':'demo');
+  if(mode==='json'){
+    const t=DATA_TIME?new Date(DATA_TIME).toLocaleString('zh-TW',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):date;
+    txt.innerHTML=`每日精算 · 更新於 ${t} · 共 ${games.length} 場`;
+  }
+  else if(mode==='live') txt.innerHTML=`即時資料 · ${date} · 共 ${games.length} 場`;
   else if(mode==='snapshot') txt.innerHTML=`<span class="big">📷 內建真實快照（${EMBED.generated} 建立）</span> · 非即時，僅供確認顯示正常，請勿據此下注`;
   else txt.innerHTML=`<span class="big">⚠ 無法連到即時資料 — 以下為範例，請勿據此下注</span>`;
 
@@ -348,7 +363,7 @@ function render(){
     if(pf.every(v=>v!=null))total=((pf[0]+pf[1]+pf[2]+pf[3])/2).toFixed(0);
 
     let spread='—';
-    if(r.spread){const sd=r.spread[0],v=r.spread[1]; spread=`${sd==='home'?g.home.abbr:g.away.abbr} 讓 ${v.toFixed(1)}`;}
+    if(r.predMargin!=null){const v=r.predMargin, fav=v>=0?g.home.abbr:g.away.abbr; spread=`${fav} -${Math.abs(v).toFixed(1)}`;}
 
     const notes=[];
     const ai=g.inj[g.away.abbr]||[], hi=g.inj[g.home.abbr]||[];
@@ -363,6 +378,30 @@ function render(){
       vClass='bet';vHtml=`<span class="tag">值得下注</span> 模型比盤口高 ${pct(r.edge)} → 可考慮下注 <b>${team}</b>`;}
     else{vClass='skip';vHtml=`<span class="tag">略過</span> 無明顯價值（edge ${pct(r.edge)}）→ 建議略過`;}
 
+    // 預測比分 + 信心高低（更精細顯示）
+    const baseT = (total!=='—')?parseFloat(total):AVG_TOTAL[LEAGUE];
+    const hp = baseT/2 + r.predMargin/2, ap = baseT/2 - r.predMargin/2;
+    const dec = LEAGUE==='mlb'?1:0;
+    const projTxt = `預測比分 <b>${g.away.abbr} ${ap.toFixed(dec)} – ${hp.toFixed(dec)} ${g.home.abbr}</b>`;
+    const conf = Math.abs(r.pHome-0.5);
+    const confLabel = conf>=0.20?['高','chi']:conf>=0.10?['中','cmd']:['低','clo'];
+    const confTxt = `信心 <span class="${confLabel[1]}">${confLabel[0]}</span>`;
+
+    // 國際盤讓分 vs 模型分差 比對
+    let mktHtml='';
+    if(g.market && g.market.spreadHome!=null){
+      const s=g.market.spreadHome, m=r.predMargin;
+      const lineTxt = s<0?`${g.home.abbr} 讓 ${(-s).toFixed(1)}`:s>0?`${g.away.abbr} 讓 ${s.toFixed(1)}`:'不讓分';
+      const cover=m+s, leanTeam=cover>=0?g.home.abbr:g.away.abbr, leanPts=Math.abs(cover);
+      const thr=LEAGUE==='nba'?2.0:0.5, isVal=leanPts>=thr;
+      const totTxt = g.market.total!=null?`　大小 <b>${g.market.total}</b>`:'';
+      mktHtml=`<div class="mkt${isVal?' val':''}">
+        <div class="hd">國際盤（${g.market.book||'—'}）</div>
+        <div class="ln"><span>讓分 <b>${lineTxt}</b>${totTxt}</span>
+        <span>模型偏 <span class="lean">${leanTeam} 讓分</span>（差 ${leanPts.toFixed(1)} 分）${isVal?' ✅可分析':''}</span></div>
+      </div>`;
+    }
+
     const card=document.createElement('div'); card.className='card'+(vClass==='bet'?' value':'');
     card.innerHTML=`
       <div class="matchup">
@@ -373,10 +412,12 @@ function render(){
       <div class="bar"><div class="a" style="width:${wA}%">${wA}%</div><div class="h" style="width:${wH}%">${wH}%</div></div>
       <div class="metrics">
         <div class="metric"><div class="lab">看好</div><div class="val">${r.pHome>=.5?g.home.abbr:g.away.abbr} ${pct(Math.max(r.pHome,r.pAway))}</div></div>
-        <div class="metric"><div class="lab">讓分</div><div class="val">${spread}</div><div class="sub">${cfg.spread?'':'棒球不適用'}</div></div>
+        <div class="metric"><div class="lab">模型讓分</div><div class="val">${spread}</div><div class="sub">預測分差</div></div>
         <div class="metric"><div class="lab">大小分</div><div class="val">${total}</div><div class="sub">粗估·信心低</div></div>
       </div>
+      ${mktHtml}
       ${notes.length?`<div class="notes">${notes.join('')}</div>`:''}
+      <div class="proj"><span>${projTxt}</span><span>${confTxt}</span></div>
       <div class="verdict ${vClass}">${vHtml}</div>`;
     box.appendChild(card);
   }
@@ -384,20 +425,26 @@ function render(){
 }
 
 /* ============ 載入 ============ */
-async function tryDataJson(){           // 架站後由每日工作產生 data.json（同源，最穩）
+async function tryDataJson(){           // 每日工作產生的精算結果（同源，最穩，優先用）
   try{
-    const d=await sj('data.json');
+    const d=await sj('data.json?t='+Date.now());   // 加時間戳避免瀏覽器快取舊檔
     const arr=(d[LEAGUE]||[]);
-    return arr.length?arr:null;
+    if(!arr.length) return null;
+    DATA_TIME=d.generated||null;
+    return arr;
   }catch(e){return null;}
 }
 async function load(){
   const cfg=LEAGUES[LEAGUE];
   document.getElementById('status').className='status loading';
-  document.getElementById('statusText').textContent='連線中，正在抓取即時資料…';
+  document.getElementById('statusText').textContent='讀取最新精算資料…';
   document.getElementById('games').innerHTML='';
 
-  // 1) 即時抓 ESPN（架在真網址時最理想）
+  // 1) 優先讀同源 data.json（每天 GitHub 自動算好，含讓分/賠率，最穩）
+  const dj=await tryDataJson();
+  if(dj){ STATE={games:dj,cfg:cfg,mode:'json'}; render(); return; }
+
+  // 2) 退而求其次：瀏覽器即時抓 ESPN
   const res=await Promise.all([
     fetchStrength(cfg).catch(()=>({})),
     fetchTodayGames(cfg).catch(()=>[]),
@@ -413,11 +460,8 @@ async function load(){
     }
     STATE={games:games,cfg:cfg,mode:'live'}; render(); return;
   }
-  // 2) 同源 data.json（架站＋每日工作自動更新時）
-  const dj=await tryDataJson();
-  if(dj){ STATE={games:dj.map(g=>({...g,_odds:null})),cfg:cfg,mode:'live'}; render(); return; }
   // 3) 內建真實快照
-  if((EMBED[LEAGUE]||[]).length){ STATE={games:EMBED[LEAGUE].map(g=>({...g,_odds:null})),cfg:cfg,mode:'snapshot'}; render(); return; }
+  if((EMBED[LEAGUE]||[]).length){ STATE={games:EMBED[LEAGUE].map(g=>({...g,_odds:g._odds||null})),cfg:cfg,mode:'snapshot'}; render(); return; }
   // 4) 最後才用範例
   STATE={games:DEMO[LEAGUE].map(g=>({...g,_odds:null})),cfg:cfg,mode:'demo'}; render();
 }
