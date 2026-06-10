@@ -11,8 +11,8 @@ import os, json, datetime as dt
 import requests
 
 LEAGUES = {
-    "nba": {"path": "basketball/nba", "homeAdv": 2.5,  "shrink": 6,  "oddsSport": "basketball_nba", "injuries": True},
-    "mlb": {"path": "baseball/mlb",   "homeAdv": 0.25, "shrink": 20, "oddsSport": "baseball_mlb",   "injuries": False},
+    "nba": {"path": "basketball/nba", "homeAdv": 2.5,  "sigma": 12.0, "shrink": 6,  "oddsSport": "basketball_nba", "injuries": True},
+    "mlb": {"path": "baseball/mlb",   "homeAdv": 0.25, "sigma": 4.5,  "shrink": 20, "oddsSport": "baseball_mlb",   "injuries": False},
 }
 UA = {"User-Agent": "Mozilla/5.0"}
 
@@ -95,13 +95,17 @@ def probable(c):
         return None
 
 
-def fetch_today(cfg):
-    data = get(f"https://site.api.espn.com/apis/site/v2/sports/{cfg['path']}/scoreboard")
+def fetch_today(cfg, date=None):
+    url = f"https://site.api.espn.com/apis/site/v2/sports/{cfg['path']}/scoreboard"
+    if date:
+        url += f"?dates={date}"
+    data = get(url)
     out = []
     for ev in data.get("events", []):
         try:
             comp = ev["competitions"][0]
             state = comp["status"]["type"]["state"]
+            game_date = (ev.get("date") or "")[:10]   # YYYY-MM-DD
             home = away = None
             for c in comp["competitors"]:
                 t = {"abbr": c["team"]["abbreviation"], "nick": c["team"].get("name"),
@@ -110,7 +114,9 @@ def fetch_today(cfg):
                 if c["homeAway"] == "home": home = t
                 else: away = t
             if home and away:
-                out.append({"state": state, "home": home, "away": away})
+                if state == "post":     # 已結束的不預測
+                    continue
+                out.append({"id": ev.get("id"), "state": state, "home": home, "away": away, "date": game_date})
         except (KeyError, IndexError):
             continue
     return out
@@ -227,17 +233,26 @@ def build_league(lg):
     cfg = LEAGUES[lg]
     print(f"[{lg}] 抓取中…")
     strength = fetch_strength(cfg)
-    games = fetch_today(cfg)
+    games = []
+    seen = set()
+    for d in (et_date(0), et_date(1)):          # 今天 + 明天（美東日期）
+        for g in fetch_today(cfg, d):
+            k = g.get("id") or (g["away"]["abbr"], g["home"]["abbr"], g.get("date"))
+            if k in seen:
+                continue
+            seen.add(k)
+            games.append(g)
     inj = fetch_injuries(cfg)
     odds = fetch_odds(cfg, os.environ.get("ODDS_API_KEY"))
-    print(f"  隊伍實力 {len(strength)} 隊、今日 {len(games)} 場、賠率 {len(odds)} 場")
+    print(f"  隊伍實力 {len(strength)} 隊、未開打 {len(games)} 場、賠率 {len(odds)} 場")
 
     out = []
     for g in games:
         a, h = g["away"], g["home"]
         od = match_odds(odds, a["name"], h["name"])
         out.append({
-            "state": g["state"], "away": a, "home": h,
+            "id": g.get("id"), "state": g["state"], "date": g.get("date"),
+            "away": a, "home": h,
             "_s": {"a": strength.get(a["abbr"], {}), "h": strength.get(h["abbr"], {})},
             "inj": {a["abbr"]: inj.get(a["abbr"], []), h["abbr"]: inj.get(h["abbr"], [])},
             "_odds": od["h2h"] if od else None,
@@ -245,25 +260,194 @@ def build_league(lg):
                        if od else None),
         })
 
-    # MLB：把先發投手 ERA 納入當日球隊實力（先發越強→球隊讓分/勝率往上修）
     if lg == "mlb":
-        adjust_for_pitchers(out)
+        adjust_for_pitchers(out)   # 先發投手要在算 pick 之前先修正好 margin
     return out
+
+
+# ============ 預測數學（與網站 index.html 算法一致）============
+def et_date(offset=0):
+    et = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=4) + dt.timedelta(days=offset)
+    return et.strftime("%Y%m%d")
+
+
+def _normcdf(x):
+    import math
+    return 0.5 * (1 + math.erf(x / (2 ** 0.5)))
+
+
+def _shrunk(s, cfg):
+    if not s or s.get("margin") is None:
+        return None
+    gp = s.get("gp") or 1
+    return s["margin"] * (gp / (gp + cfg["shrink"]))
+
+
+def compute_pick(game, cfg):
+    """重現網站的算法：算出勝率、預測分差、看好方、edge、讓分傾向。"""
+    mA = _shrunk(game["_s"].get("a"), cfg)
+    mH = _shrunk(game["_s"].get("h"), cfg)
+    if mA is None or mH is None:
+        return None
+    pred = (mH - mA) + cfg["homeAdv"]
+    p_home = _normcdf(pred / cfg["sigma"])
+    pick_su = "home" if p_home >= 0.5 else "away"
+    edge = edge_side = None
+    od = game.get("_odds")
+    if od:
+        eH, eA = p_home - od["home"], (1 - p_home) - od["away"]
+        edge, edge_side = (eH, "home") if eH >= eA else (eA, "away")
+    spread_home = ats = None
+    mk = game.get("market")
+    if mk and mk.get("spreadHome") is not None:
+        spread_home = mk["spreadHome"]
+        ats = "home" if (pred + spread_home) >= 0 else "away"
+    return {"pHome": round(p_home, 4), "predMargin": round(pred, 3), "pickSU": pick_su,
+            "edge": round(edge, 4) if edge is not None else None, "edgeSide": edge_side,
+            "isValue": bool(edge is not None and edge >= 0.03),
+            "spreadHome": spread_home, "atsLean": ats}
+
+
+# ============ 結果抓取與戰績對帳 ============
+def fetch_results(cfg, date):
+    """抓某天『已結束』的比賽與比分（用來跟之前的預測對帳）。"""
+    url = f"https://site.api.espn.com/apis/site/v2/sports/{cfg['path']}/scoreboard?dates={date}"
+    try:
+        data = get(url)
+    except Exception:
+        return []
+    out = []
+    for ev in data.get("events", []):
+        try:
+            comp = ev["competitions"][0]
+            if comp["status"]["type"]["state"] != "post":
+                continue
+            hs = as_ = None
+            for c in comp["competitors"]:
+                sc = c.get("score")
+                sc = int(sc) if sc not in (None, "") else None
+                if c["homeAway"] == "home": hs = sc
+                else: as_ = sc
+            if hs is not None and as_ is not None:
+                out.append({"id": ev.get("id"), "home_score": hs, "away_score": as_})
+        except (KeyError, IndexError, ValueError):
+            continue
+    return out
+
+
+def load_history():
+    # 歷史紀錄直接存在 data.json 裡（這樣 GitHub 只要 commit data.json 即可，不用改 yml）
+    if os.path.exists("data.json"):
+        try:
+            with open("data.json", encoding="utf-8") as f:
+                return json.load(f).get("_history", {}) or {}
+        except Exception:
+            return {}
+    return {}
+
+
+def cap_history(hist, n=400):
+    items = sorted(hist.items(), key=lambda kv: (kv[1].get("date") or ""), reverse=True)
+    return dict(items[:n])
+
+
+def log_predictions(lg, cfg, out, hist):
+    """把未開打場次的預測記下來（之後比對用）。已記過的不重複。"""
+    for g in out:
+        if not g.get("id"):
+            continue
+        key = f"{lg}:{g['id']}"
+        if key in hist:
+            continue
+        pick = compute_pick(g, cfg)
+        if not pick:
+            continue
+        rec = {"lg": lg, "date": g.get("date"),
+               "away": g["away"]["abbr"], "home": g["home"]["abbr"], "graded": False}
+        rec.update(pick)
+        hist[key] = rec
+
+
+def grade_predictions(lg, cfg, hist):
+    """抓昨天/今天的結果，幫還沒對帳的預測打分。"""
+    results = {}
+    for d in (et_date(-1), et_date(0)):
+        for r in fetch_results(cfg, d):
+            if r.get("id"):
+                results[f"{lg}:{r['id']}"] = r
+    graded_now = 0
+    for key, h in hist.items():
+        if h.get("graded") or key not in results:
+            continue
+        r = results[key]
+        hs, as_ = r["home_score"], r["away_score"]
+        winner = "home" if hs > as_ else "away"
+        h["homeScore"], h["awayScore"], h["winner"] = hs, as_, winner
+        h["suHit"] = (h.get("pickSU") == winner)
+        # 讓分對帳
+        if h.get("spreadHome") is not None and h.get("atsLean"):
+            cover = (hs - as_) + h["spreadHome"]
+            if abs(cover) < 1e-9:
+                h["atsHit"] = None            # 剛好打和（push）
+            else:
+                home_covered = cover > 0
+                h["atsHit"] = (h["atsLean"] == "home") == home_covered
+        else:
+            h["atsHit"] = None
+        # 值得下注對帳
+        h["valueHit"] = (h["edgeSide"] == winner) if (h.get("isValue") and h.get("edgeSide")) else None
+        h["graded"] = True
+        graded_now += 1
+    if graded_now:
+        print(f"  [{lg}] 對帳了 {graded_now} 場結果")
+
+
+def summarize(hist):
+    su = [0, 0]; val = [0, 0]; ats = [0, 0]
+    for h in hist.values():
+        if not h.get("graded"):
+            continue
+        if h.get("suHit") is True: su[0] += 1
+        elif h.get("suHit") is False: su[1] += 1
+        if h.get("valueHit") is True: val[0] += 1
+        elif h.get("valueHit") is False: val[1] += 1
+        if h.get("atsHit") is True: ats[0] += 1
+        elif h.get("atsHit") is False: ats[1] += 1
+    return {"su": su, "value": val, "ats": ats}
+
+
+def recent_graded(hist, n=12):
+    graded = [h for h in hist.values() if h.get("graded")]
+    graded.sort(key=lambda h: (h.get("date") or "", h.get("home") or ""), reverse=True)
+    keys = ("lg", "date", "away", "home", "awayScore", "homeScore", "winner",
+            "pickSU", "suHit", "isValue", "edgeSide", "valueHit", "atsLean", "atsHit")
+    return [{k: h.get(k) for k in keys} for h in graded[:n]]
+
 
 
 def main():
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=8)))   # 台灣時間
+    hist = load_history()
     data = {"generated": now.isoformat(timespec="minutes"), "model": "power-rating+pitcher-v2"}
     for lg in LEAGUES:
+        cfg = LEAGUES[lg]
         try:
-            data[lg] = build_league(lg)
+            grade_predictions(lg, cfg, hist)     # 1) 先對帳昨天/今天已結束的
+            out = build_league(lg)               # 2) 抓今天+明天未開打的
+            log_predictions(lg, cfg, out, hist)  # 3) 把新預測記下來
+            data[lg] = out
         except Exception as e:
             print(f"[{lg}] 失敗：{e}")
             data[lg] = []
+    hist = cap_history(hist)
+    data["stats"] = summarize(hist)
+    data["recent"] = recent_graded(hist, 12)
+    data["_history"] = hist
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
-    print("已寫出 data.json："
-          f"NBA {len(data.get('nba', []))} 場、MLB {len(data.get('mlb', []))} 場")
+    s = data["stats"]
+    print(f"已寫出 data.json：NBA {len(data.get('nba', []))} 場、MLB {len(data.get('mlb', []))} 場")
+    print(f"戰績：看好方 {s['su'][0]}-{s['su'][1]}、值得下注 {s['value'][0]}-{s['value'][1]}、讓分 {s['ats'][0]}-{s['ats'][1]}")
 
 
 if __name__ == "__main__":
