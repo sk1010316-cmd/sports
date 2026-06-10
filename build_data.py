@@ -116,7 +116,8 @@ def fetch_today(cfg, date=None):
             if home and away:
                 if state == "post":     # 已結束的不預測
                     continue
-                out.append({"id": ev.get("id"), "state": state, "home": home, "away": away, "date": game_date})
+                out.append({"id": ev.get("id"), "state": state, "home": home, "away": away,
+                            "date": game_date, "start": ev.get("date")})
         except (KeyError, IndexError):
             continue
     return out
@@ -237,11 +238,12 @@ def build_league(lg):
     seen = set()
     for d in (et_date(0), et_date(1)):          # 今天 + 明天（美東日期）
         for g in fetch_today(cfg, d):
-            k = g.get("id") or (g["away"]["abbr"], g["home"]["abbr"], g.get("date"))
+            k = (g["away"]["abbr"], g["home"]["abbr"], g.get("start"))   # 用開賽時間去重（系列賽不會誤殺）
             if k in seen:
                 continue
             seen.add(k)
             games.append(g)
+    games.sort(key=lambda g: g.get("start") or "")   # 依開賽時間排序
     inj = fetch_injuries(cfg)
     odds = fetch_odds(cfg, os.environ.get("ODDS_API_KEY"))
     print(f"  隊伍實力 {len(strength)} 隊、未開打 {len(games)} 場、賠率 {len(odds)} 場")
@@ -251,7 +253,7 @@ def build_league(lg):
         a, h = g["away"], g["home"]
         od = match_odds(odds, a["name"], h["name"])
         out.append({
-            "id": g.get("id"), "state": g["state"], "date": g.get("date"),
+            "id": g.get("id"), "state": g["state"], "date": g.get("date"), "start": g.get("start"),
             "away": a, "home": h,
             "_s": {"a": strength.get(a["abbr"], {}), "h": strength.get(h["abbr"], {})},
             "inj": {a["abbr"]: inj.get(a["abbr"], []), h["abbr"]: inj.get(h["abbr"], [])},
@@ -362,7 +364,7 @@ def log_predictions(lg, cfg, out, hist):
         pick = compute_pick(g, cfg)
         if not pick:
             continue
-        rec = {"lg": lg, "date": g.get("date"),
+        rec = {"lg": lg, "date": g.get("date"), "start": g.get("start"),
                "away": g["away"]["abbr"], "home": g["home"]["abbr"], "graded": False}
         rec.update(pick)
         hist[key] = rec
@@ -419,8 +421,9 @@ def summarize(hist):
 def recent_graded(hist, n=12):
     graded = [h for h in hist.values() if h.get("graded")]
     graded.sort(key=lambda h: (h.get("date") or "", h.get("home") or ""), reverse=True)
-    keys = ("lg", "date", "away", "home", "awayScore", "homeScore", "winner",
-            "pickSU", "suHit", "isValue", "edgeSide", "valueHit", "atsLean", "atsHit")
+    keys = ("lg", "date", "start", "away", "home", "awayScore", "homeScore", "winner",
+            "pickSU", "pHome", "suHit", "isValue", "edge", "edgeSide", "valueHit",
+            "spreadHome", "atsLean", "atsHit")
     return [{k: h.get(k) for k in keys} for h in graded[:n]]
 
 
@@ -441,7 +444,7 @@ def main():
             data[lg] = []
     hist = cap_history(hist)
     data["stats"] = summarize(hist)
-    data["recent"] = recent_graded(hist, 12)
+    data["recent"] = recent_graded(hist, 60)
     data["_history"] = hist
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
