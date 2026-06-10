@@ -1,0 +1,834 @@
+{
+ "generated": "2026-06-10T12:36+08:00",
+ "model": "power-rating-v1",
+ "nba": [
+  {
+   "state": "pre",
+   "away": {
+    "abbr": "SA",
+    "nick": "Spurs",
+    "name": "San Antonio Spurs",
+    "pitcher": null
+   },
+   "home": {
+    "abbr": "NY",
+    "nick": "Knicks",
+    "name": "New York Knicks",
+    "pitcher": null
+   },
+   "_s": {
+    "a": {
+     "margin": 8.3,
+     "pf": 119.83,
+     "pa": 111.52,
+     "gp": 1,
+     "w": 62,
+     "l": 20
+    },
+    "h": {
+     "margin": 6.4,
+     "pf": 116.45,
+     "pa": 110.12,
+     "gp": 1,
+     "w": 53,
+     "l": 29
+    }
+   },
+   "inj": {
+    "SA": [],
+    "NY": []
+   },
+   "_odds": {
+    "home": 0.5381150771309536,
+    "away": 0.4618849228690463
+   },
+   "market": {
+    "spreadHome": -2.5,
+    "total": 216.5,
+    "book": "Pinnacle"
+   }
+  }
+ ],
+ "mlb": [
+  {
+   "state": "post",
+   "away": {
+    "abbr": "SEA",
+    "nick": "Mariners",
+    "name": "Seattle Mariners",
+    "pitcher": {
+     "name": "Logan Gilbert",
+     "era": "3.62"
+    }
+   },
+   "home": {
+    "abbr": "BAL",
+    "nick": "Orioles",
+    "name": "Baltimore Orioles",
+    "pitcher": {
+     "name": "Trevor Rogers",
+     "era": "6.15"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.007,
+     "pf": 4.26,
+     "pa": 3.78,
+     "gp": 68,
+     "w": 5,
+     "l": 4
+    },
+    "h": {
+     "margin": -0.007,
+     "pf": 4.66,
+     "pa": 5.18,
+     "gp": 68,
+     "w": 2,
+     "l": 2
+    }
+   },
+   "inj": {
+    "SEA": [],
+    "BAL": []
+   },
+   "_odds": {
+    "home": 0.4671403197158081,
+    "away": 0.532859680284192
+   },
+   "market": {
+    "spreadHome": 1.5,
+    "total": 9.0,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "ARI",
+    "nick": "Diamondbacks",
+    "name": "Arizona Diamondbacks",
+    "pitcher": {
+     "name": "Zac Gallen",
+     "era": "5.43"
+    }
+   },
+   "home": {
+    "abbr": "MIA",
+    "nick": "Marlins",
+    "name": "Miami Marlins",
+    "pitcher": {
+     "name": "Max Meyer",
+     "era": "2.85"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": -0.003,
+     "pf": 4.38,
+     "pa": 4.59,
+     "gp": 66,
+     "w": 2,
+     "l": 4
+    },
+    "h": {
+     "margin": -0.003,
+     "pf": 4.27,
+     "pa": 4.51,
+     "gp": 67,
+     "w": 1,
+     "l": 3
+    }
+   },
+   "inj": {
+    "ARI": [],
+    "MIA": []
+   },
+   "_odds": {
+    "home": 0.5004983802641415,
+    "away": 0.4995016197358585
+   },
+   "market": {
+    "spreadHome": -1.5,
+    "total": 8.0,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "BOS",
+    "nick": "Red Sox",
+    "name": "Boston Red Sox",
+    "pitcher": {
+     "name": "Payton Tolle",
+     "era": "2.70"
+    }
+   },
+   "home": {
+    "abbr": "TB",
+    "nick": "Rays",
+    "name": "Tampa Bay Rays",
+    "pitcher": {
+     "name": "Nick Martinez",
+     "era": "2.43"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": -0.003,
+     "pf": 3.89,
+     "pa": 4.08,
+     "gp": 65,
+     "w": 1,
+     "l": 3
+    },
+    "h": {
+     "margin": 0.002,
+     "pf": 4.53,
+     "pa": 4.38,
+     "gp": 64,
+     "w": 5,
+     "l": 4
+    }
+   },
+   "inj": {
+    "BOS": [],
+    "TB": []
+   },
+   "_odds": {
+    "home": 0.566722429545747,
+    "away": 0.433277570454253
+   },
+   "market": {
+    "spreadHome": -1.4,
+    "total": 7.5,
+    "book": "國際均盤"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "LAD",
+    "nick": "Dodgers",
+    "name": "Los Angeles Dodgers",
+    "pitcher": {
+     "name": "Eric Lauer",
+     "era": "5.47"
+    }
+   },
+   "home": {
+    "abbr": "PIT",
+    "nick": "Pirates",
+    "name": "Pittsburgh Pirates",
+    "pitcher": {
+     "name": "Paul Skenes",
+     "era": "2.84"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.031,
+     "pf": 5.33,
+     "pa": 3.21,
+     "gp": 67,
+     "w": 0,
+     "l": 0
+    },
+    "h": {
+     "margin": 0.004,
+     "pf": 5.01,
+     "pa": 4.7,
+     "gp": 67,
+     "w": 3,
+     "l": 6
+    }
+   },
+   "inj": {
+    "LAD": [],
+    "PIT": []
+   },
+   "_odds": {
+    "home": 0.36293155663234405,
+    "away": 0.637068443367656
+   },
+   "market": {
+    "spreadHome": 1.5,
+    "total": 8.0,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "MIN",
+    "nick": "Twins",
+    "name": "Minnesota Twins",
+    "pitcher": {
+     "name": "Taj Bradley",
+     "era": "4.02"
+    }
+   },
+   "home": {
+    "abbr": "DET",
+    "nick": "Tigers",
+    "name": "Detroit Tigers",
+    "pitcher": {
+     "name": "Troy Melton",
+     "era": "2.81"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": -0.007,
+     "pf": 4.59,
+     "pa": 5.06,
+     "gp": 68,
+     "w": 2,
+     "l": 2
+    },
+    "h": {
+     "margin": -0.004,
+     "pf": 4.03,
+     "pa": 4.3,
+     "gp": 67,
+     "w": 0,
+     "l": 5
+    }
+   },
+   "inj": {
+    "MIN": [],
+    "DET": []
+   },
+   "_odds": {
+    "home": 0.5977552498189717,
+    "away": 0.40224475018102834
+   },
+   "market": {
+    "spreadHome": -1.5,
+    "total": 9.5,
+    "book": "國際均盤"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "NYY",
+    "nick": "Yankees",
+    "name": "New York Yankees",
+    "pitcher": {
+     "name": "Gerrit Cole",
+     "era": "2.45"
+    }
+   },
+   "home": {
+    "abbr": "CLE",
+    "nick": "Guardians",
+    "name": "Cleveland Guardians",
+    "pitcher": {
+     "name": "Slade Cecconi",
+     "era": "4.83"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.023,
+     "pf": 5.06,
+     "pa": 3.56,
+     "gp": 66,
+     "w": 1,
+     "l": 3
+    },
+    "h": {
+     "margin": -0.001,
+     "pf": 4.04,
+     "pa": 4.07,
+     "gp": 69,
+     "w": 2,
+     "l": 3
+    }
+   },
+   "inj": {
+    "NYY": [],
+    "CLE": []
+   },
+   "_odds": {
+    "home": 0.5149679258731291,
+    "away": 0.4850320741268709
+   },
+   "market": {
+    "spreadHome": -1.5,
+    "total": 8.0,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "PHI",
+    "nick": "Phillies",
+    "name": "Philadelphia Phillies",
+    "pitcher": {
+     "name": "Zack Wheeler",
+     "era": "2.22"
+    }
+   },
+   "home": {
+    "abbr": "TOR",
+    "nick": "Blue Jays",
+    "name": "Toronto Blue Jays",
+    "pitcher": {
+     "name": "Dylan Cease",
+     "era": "2.91"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": -0.004,
+     "pf": 4.01,
+     "pa": 4.27,
+     "gp": 67,
+     "w": 4,
+     "l": 3
+    },
+    "h": {
+     "margin": -0.003,
+     "pf": 4.07,
+     "pa": 4.29,
+     "gp": 68,
+     "w": 4,
+     "l": 3
+    }
+   },
+   "inj": {
+    "PHI": [],
+    "TOR": []
+   },
+   "_odds": {
+    "home": 0.4270909534259937,
+    "away": 0.5729090465740063
+   },
+   "market": {
+    "spreadHome": 1.5,
+    "total": 8.5,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "STL",
+    "nick": "Cardinals",
+    "name": "St. Louis Cardinals",
+    "pitcher": {
+     "name": "Dustin May",
+     "era": "4.21"
+    }
+   },
+   "home": {
+    "abbr": "NYM",
+    "nick": "Mets",
+    "name": "New York Mets",
+    "pitcher": {
+     "name": "Freddy Peralta",
+     "era": "4.04"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.002,
+     "pf": 4.45,
+     "pa": 4.38,
+     "gp": 64,
+     "w": 7,
+     "l": 2
+    },
+    "h": {
+     "margin": -0.003,
+     "pf": 4.02,
+     "pa": 4.2,
+     "gp": 66,
+     "w": 7,
+     "l": 5
+    }
+   },
+   "inj": {
+    "STL": [],
+    "NYM": []
+   },
+   "_odds": {
+    "home": 0.5492072170585018,
+    "away": 0.4507927829414981
+   },
+   "market": {
+    "spreadHome": -1.5,
+    "total": 8.5,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "ATL",
+    "nick": "Braves",
+    "name": "Atlanta Braves",
+    "pitcher": {
+     "name": "Grant Holmes",
+     "era": "4.05"
+    }
+   },
+   "home": {
+    "abbr": "CHW",
+    "nick": "White Sox",
+    "name": "Chicago White Sox",
+    "pitcher": {
+     "name": "Brandon Eisert",
+     "era": "4.30"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.025,
+     "pf": 5.21,
+     "pa": 3.49,
+     "gp": 67,
+     "w": 2,
+     "l": 3
+    },
+    "h": {
+     "margin": 0.002,
+     "pf": 4.79,
+     "pa": 4.65,
+     "gp": 66,
+     "w": 5,
+     "l": 4
+    }
+   },
+   "inj": {
+    "ATL": [],
+    "CHW": []
+   },
+   "_odds": {
+    "home": 0.416929420325006,
+    "away": 0.583070579674994
+   },
+   "market": {
+    "spreadHome": 1.5,
+    "total": 7.5,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "TEX",
+    "nick": "Rangers",
+    "name": "Texas Rangers",
+    "pitcher": {
+     "name": "Nathan Eovaldi",
+     "era": "4.26"
+    }
+   },
+   "home": {
+    "abbr": "KC",
+    "nick": "Royals",
+    "name": "Kansas City Royals",
+    "pitcher": {
+     "name": "Stephen Kolek",
+     "era": "3.14"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.003,
+     "pf": 4.02,
+     "pa": 3.83,
+     "gp": 66,
+     "w": 1,
+     "l": 0
+    },
+    "h": {
+     "margin": -0.01,
+     "pf": 3.93,
+     "pa": 4.61,
+     "gp": 67,
+     "w": 3,
+     "l": 3
+    }
+   },
+   "inj": {
+    "TEX": [],
+    "KC": []
+   },
+   "_odds": {
+    "home": 0.4733308466989929,
+    "away": 0.526669153301007
+   },
+   "market": {
+    "spreadHome": 1.5,
+    "total": 10.0,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "CHC",
+    "nick": "Cubs",
+    "name": "Chicago Cubs",
+    "pitcher": {
+     "name": "Colin Rea",
+     "era": "5.19"
+    }
+   },
+   "home": {
+    "abbr": "COL",
+    "nick": "Rockies",
+    "name": "Colorado Rockies",
+    "pitcher": {
+     "name": "Tomoyuki Sugano",
+     "era": "4.08"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.0,
+     "pf": 4.57,
+     "pa": 4.58,
+     "gp": 67,
+     "w": 5,
+     "l": 4
+    },
+    "h": {
+     "margin": -0.022,
+     "pf": 4.34,
+     "pa": 5.76,
+     "gp": 67,
+     "w": 2,
+     "l": 2
+    }
+   },
+   "inj": {
+    "CHC": [],
+    "COL": []
+   },
+   "_odds": {
+    "home": 0.40122272836250306,
+    "away": 0.5987772716374968
+   },
+   "market": {
+    "spreadHome": 1.5,
+    "total": 12.0,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "post",
+   "away": {
+    "abbr": "HOU",
+    "nick": "Astros",
+    "name": "Houston Astros",
+    "pitcher": {
+     "name": "Kai-Wei Teng",
+     "era": "3.06"
+    }
+   },
+   "home": {
+    "abbr": "LAA",
+    "nick": "Angels",
+    "name": "Los Angeles Angels",
+    "pitcher": {
+     "name": "Walbert Urena",
+     "era": "2.44"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": -0.009,
+     "pf": 4.54,
+     "pa": 5.07,
+     "gp": 69,
+     "w": 3,
+     "l": 3
+    },
+    "h": {
+     "margin": -0.009,
+     "pf": 4.49,
+     "pa": 5.12,
+     "gp": 68,
+     "w": 2,
+     "l": 6
+    }
+   },
+   "inj": {
+    "HOU": [],
+    "LAA": []
+   },
+   "_odds": {
+    "home": 0.5262539184952978,
+    "away": 0.4737460815047021
+   },
+   "market": {
+    "spreadHome": -1.5,
+    "total": 8.5,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "in",
+   "away": {
+    "abbr": "CIN",
+    "nick": "Reds",
+    "name": "Cincinnati Reds",
+    "pitcher": {
+     "name": "Chase Burns",
+     "era": "2.05"
+    }
+   },
+   "home": {
+    "abbr": "SD",
+    "nick": "Padres",
+    "name": "San Diego Padres",
+    "pitcher": {
+     "name": "Lucas Giolito",
+     "era": "4.86"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": -0.012,
+     "pf": 4.26,
+     "pa": 5.11,
+     "gp": 65,
+     "w": 5,
+     "l": 3
+    },
+    "h": {
+     "margin": -0.003,
+     "pf": 3.8,
+     "pa": 4.02,
+     "gp": 65,
+     "w": 2,
+     "l": 0
+    }
+   },
+   "inj": {
+    "CIN": [],
+    "SD": []
+   },
+   "_odds": {
+    "home": 0.5955177372962608,
+    "away": 0.40448226270373927
+   },
+   "market": {
+    "spreadHome": -1.5,
+    "total": 8.0,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "in",
+   "away": {
+    "abbr": "WSH",
+    "nick": "Nationals",
+    "name": "Washington Nationals",
+    "pitcher": {
+     "name": "Andrew Alvarez",
+     "era": "3.54"
+    }
+   },
+   "home": {
+    "abbr": "SF",
+    "nick": "Giants",
+    "name": "San Francisco Giants",
+    "pitcher": {
+     "name": "Adrian Houser",
+     "era": "5.49"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.001,
+     "pf": 5.31,
+     "pa": 5.24,
+     "gp": 67,
+     "w": 4,
+     "l": 5
+    },
+    "h": {
+     "margin": -0.01,
+     "pf": 4.1,
+     "pa": 4.84,
+     "gp": 67,
+     "w": 3,
+     "l": 3
+    }
+   },
+   "inj": {
+    "WSH": [],
+    "SF": []
+   },
+   "_odds": {
+    "home": 0.5299590621510979,
+    "away": 0.4700409378489022
+   },
+   "market": {
+    "spreadHome": -1.5,
+    "total": 8.5,
+    "book": "Pinnacle"
+   }
+  },
+  {
+   "state": "in",
+   "away": {
+    "abbr": "MIL",
+    "nick": "Brewers",
+    "name": "Milwaukee Brewers",
+    "pitcher": {
+     "name": "Robert Gasser",
+     "era": "4.73"
+    }
+   },
+   "home": {
+    "abbr": "ATH",
+    "nick": "Athletics",
+    "name": "Athletics",
+    "pitcher": {
+     "name": "J.T. Ginn",
+     "era": "2.74"
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.027,
+     "pf": 5.38,
+     "pa": 3.72,
+     "gp": 64,
+     "w": 5,
+     "l": 2
+    },
+    "h": {
+     "margin": -0.011,
+     "pf": 4.35,
+     "pa": 5.02,
+     "gp": 66,
+     "w": 5,
+     "l": 3
+    }
+   },
+   "inj": {
+    "MIL": [],
+    "ATH": []
+   },
+   "_odds": {
+    "home": 0.4917127071823204,
+    "away": 0.5082872928176795
+   },
+   "market": {
+    "spreadHome": 1.5,
+    "total": 14.5,
+    "book": "Pinnacle"
+   }
+  }
+ ]
+}
