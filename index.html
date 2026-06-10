@@ -365,7 +365,14 @@ function render(){
 
   const rows=games.map(g=>{
     const sA=g._s?g._s.a:g._strA, sH=g._s?g._s.h:g._strH;
-    return {g,sA,sH,r:compute(cfg,sA,sH,g._odds)};
+    let r;
+    if(g.pre && g.pre.pHome!=null){      // 每日精算已混合國際盤，直接用（更明確）
+      r={pHome:g.pre.pHome, pAway:1-g.pre.pHome, predMargin:g.pre.predMargin,
+         edge:g.pre.edge, side:g.pre.edgeSide};
+    } else {
+      r=compute(cfg,sA,sH,g._odds);
+    }
+    return {g,sA,sH,r};
   });
   rows.sort((x,y)=>((x.g.start||'')<(y.g.start||'')?-1:1));   // 依開賽時間排序
 
