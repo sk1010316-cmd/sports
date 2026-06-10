@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -95,6 +94,20 @@
   .mkt .hd{font-size:10px;color:var(--faint);letter-spacing:1px;margin-bottom:6px}
   .mkt .ln{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .mkt b{color:var(--ink);font-family:var(--mono)} .mkt .lean{color:var(--gold);font-weight:700}
+  .stats{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+  .stats .pill{flex:1;min-width:110px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 13px}
+  .stats .pill .lab{font-size:10px;color:var(--faint);letter-spacing:1px;margin-bottom:2px}
+  .stats .pill .num{font-family:var(--disp);font-size:26px;letter-spacing:1px}
+  .stats .pill .pc{font-size:12px;color:var(--dim);font-family:var(--mono)}
+  .stats .win{color:var(--green)} .stats .lose{color:var(--red)}
+  .recent{margin-top:26px}
+  .recent h3{font-weight:900;font-size:15px;color:var(--dim);margin-bottom:10px}
+  .recent .r{display:flex;align-items:center;gap:9px;padding:8px 4px;border-bottom:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+  .recent .dt{font-size:11px;color:var(--faint);font-family:var(--mono);min-width:38px}
+  .recent .sc{font-family:var(--mono);color:var(--ink);min-width:150px}
+  .recent .bdg{font-size:11px;padding:2px 7px;border-radius:5px;border:1px solid var(--line);color:var(--dim)}
+  .recent .ok{color:var(--green);border-color:rgba(79,208,138,.4)}
+  .recent .no{color:var(--red);border-color:rgba(226,97,91,.4)}
 
   .verdict{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:13px;display:flex;align-items:center;gap:9px;font-weight:500}
   .verdict.bet{background:rgba(79,208,138,.1);border:1px solid rgba(79,208,138,.4);color:var(--green)}
@@ -148,7 +161,11 @@
     </div>
   </div>
 
+  <div class="stats" id="stats"></div>
+
   <div class="games" id="games"></div>
+
+  <div class="recent" id="recent"></div>
 
   <footer>
     <h4>欄位怎麼看</h4>
@@ -174,6 +191,8 @@ let LEAGUE = 'nba';
 let ODDS_KEY = '';
 let STATE = null;
 let DATA_TIME = null;
+let DATA_STATS = null;
+let DATA_RECENT = null;
 const AVG_TOTAL = {nba:228, mlb:8.6};   // 預測比分用的聯盟平均總分基準
 
 /* ============ 中文隊名（以英文暱稱為 key，最穩定）============ */
@@ -422,15 +441,42 @@ function render(){
     box.appendChild(card);
   }
   if(!drawn)box.innerHTML=`<div class="empty"><div class="big">資料不足</div>抓到對戰但缺少隊伍實力資料，稍後再更新。</div>`;
+  renderStats(mode);
+  renderRecent(mode);
 }
 
-/* ============ 載入 ============ */
+function pctStr(w,l){const t=w+l; return t?Math.round(w/t*100)+'%':'—';}
+function renderStats(mode){
+  const el=document.getElementById('stats');
+  if(mode!=='json' || !DATA_STATS || (DATA_STATS.su[0]+DATA_STATS.su[1])===0){el.innerHTML='';return;}
+  const s=DATA_STATS;
+  const pill=(lab,arr)=>{const w=arr[0],l=arr[1],t=w+l,cls=t&&w/t>=0.5?'win':(t?'lose':'');
+    return `<div class="pill"><div class="lab">${lab}</div><div class="num ${cls}">${w}-${l}</div><div class="pc">${pctStr(w,l)}</div></div>`;};
+  el.innerHTML = pill('模型看好方',s.su)+pill('值得下注 ≥3%',s.value)+pill('國際盤讓分',s.ats);
+}
+function renderRecent(mode){
+  const el=document.getElementById('recent');
+  if(mode!=='json' || !DATA_RECENT){el.innerHTML='';return;}
+  const rows=DATA_RECENT.filter(r=>r.lg===LEAGUE);
+  if(!rows.length){el.innerHTML='';return;}
+  let h='<h3>近期戰績（已結束）</h3>';
+  for(const r of rows){
+    const su = r.suHit?'<span class="bdg ok">看好✓</span>':'<span class="bdg no">看好✗</span>';
+    let val=''; if(r.isValue) val = r.valueHit?' <span class="bdg ok">注✓</span>':' <span class="bdg no">注✗</span>';
+    let ats=''; if(r.atsHit===true) ats=' <span class="bdg ok">讓✓</span>'; else if(r.atsHit===false) ats=' <span class="bdg no">讓✗</span>';
+    h+=`<div class="r"><span class="dt">${(r.date||'').slice(5)}</span><span class="sc">${r.away} ${r.awayScore} - ${r.homeScore} ${r.home}</span>${su}${val}${ats}</div>`;
+  }
+  el.innerHTML=h;
+}
+
 async function tryDataJson(){           // 每日工作產生的精算結果（同源，最穩，優先用）
   try{
     const d=await sj('data.json?t='+Date.now());   // 加時間戳避免瀏覽器快取舊檔
     const arr=(d[LEAGUE]||[]);
     if(!arr.length) return null;
     DATA_TIME=d.generated||null;
+    DATA_STATS=d.stats||null;
+    DATA_RECENT=d.recent||null;
     return arr;
   }catch(e){return null;}
 }
