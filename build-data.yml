@@ -1,0 +1,37 @@
+name: build-data
+
+# 每天台灣時間早上 6:00 自動跑一次；也可以在 Actions 頁面手動按 Run
+on:
+  schedule:
+    - cron: "0 22 * * *"      # UTC 22:00 = 台灣 06:00
+    - cron: "0 10 * * *"      # UTC 10:00 = 台灣 18:00
+  workflow_dispatch: {}
+
+permissions:
+  contents: write              # 允許把 data.json 寫回 repo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安裝套件
+        run: pip install requests
+
+      - name: 產生 data.json
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}   # 選用：到 repo Settings→Secrets 設定後才會算賠率
+        run: python build_data.py
+
+      - name: 提交更新
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data.json history.json
+          git commit -m "每日更新 data.json + 對帳" || echo "今日無變動"
+          git push
