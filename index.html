@@ -280,7 +280,8 @@ async function fetchTodayGames(cfg){
                  score:c.score!=null?parseInt(c.score):null,pitcher:probableOf(c)};
         if(c.homeAway==='home')home=t; else away=t;
       }
-      if(home&&away)out.push({state,home,away,inj:{}});
+      if(state==='post')continue;
+      if(home&&away)out.push({state,home,away,inj:{},start:ev.date});
     }catch(e){}
   }
   return out;
@@ -469,7 +470,7 @@ function render(){
 function pctStr(w,l){const t=w+l; return t?Math.round(w/t*100)+'%':'—';}
 function renderStats(mode){
   const el=document.getElementById('stats');
-  if(mode!=='json' || !DATA_STATS || (DATA_STATS.su[0]+DATA_STATS.su[1])===0){el.innerHTML='';return;}
+  if(!DATA_STATS || (DATA_STATS.su[0]+DATA_STATS.su[1])===0){el.innerHTML='';return;}
   const s=DATA_STATS;
   const pill=(lab,arr)=>{const w=arr[0],l=arr[1],t=w+l,cls=t&&w/t>=0.5?'win':(t?'lose':'');
     return `<div class="pill"><div class="lab">${lab}</div><div class="num ${cls}">${w}-${l}</div><div class="pc">${pctStr(w,l)}</div></div>`;};
@@ -477,7 +478,6 @@ function renderStats(mode){
 }
 function renderCompleted(mode){
   const el=document.getElementById('recent');
-  if(mode!=='json'){el.innerHTML=`<div class="empty"><div class="big">無對帳資料</div>對帳結果由每日精算產生，這裡只在讀到 data.json 時顯示。</div>`;return;}
   const rows=(DATA_RECENT||[]).filter(r=>r.lg===LEAGUE);
   if(!rows.length){el.innerHTML=`<div class="empty"><div class="big">尚無對帳</div>這個聯盟還沒有已對帳的比賽——要等比賽打完、隔天自動更新後才會出現。</div>`;return;}
   let h='<h3>已完成 · 預測對帳（看模型準不準）</h3>';
@@ -496,14 +496,22 @@ function renderCompleted(mode){
   el.innerHTML=h;
 }
 
-async function tryDataJson(){           // 每日工作產生的精算結果（同源，最穩，優先用）
+function isFreshToday(gen){
+  if(!gen) return false;
+  const n=new Date();
+  const tpe=new Date(n.getTime()+n.getTimezoneOffset()*60000+8*3600000);   // 台灣今天
+  const today=`${tpe.getFullYear()}-${String(tpe.getMonth()+1).padStart(2,'0')}-${String(tpe.getDate()).padStart(2,'0')}`;
+  return String(gen).slice(0,10)===today;
+}
+async function tryDataJson(){           // 每日精算結果；但過期就不用它的未開打場（改抓即時）
   try{
     const d=await sj('data.json?t='+Date.now());   // 加時間戳避免瀏覽器快取舊檔
-    const arr=(d[LEAGUE]||[]);
-    if(!arr.length) return null;
     DATA_TIME=d.generated||null;
     DATA_STATS=d.stats||null;
-    DATA_RECENT=d.recent||null;
+    DATA_RECENT=d.recent||null;                     // 戰績不論新舊都留著顯示
+    const arr=(d[LEAGUE]||[]);
+    if(!arr.length) return null;
+    if(!isFreshToday(d.generated)) return null;      // 精算過期 → 退回即時抓今天的
     return arr;
   }catch(e){return null;}
 }
