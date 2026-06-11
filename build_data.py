@@ -322,7 +322,8 @@ def compute_pick(game, cfg):
     return {"pHome": round(p_home, 4), "predMargin": round(pred, 3), "pickSU": pick_su,
             "blended": blended,
             "edge": round(edge, 4) if edge is not None else None, "edgeSide": edge_side,
-            "isValue": bool(edge is not None and edge >= 0.03),
+            # 只有「看好方」同時也是「被低估方」才算真價值，避免推自己看衰的隊
+            "isValue": bool(edge is not None and edge >= 0.03 and edge_side == pick_su),
             "spreadHome": spread_home, "atsLean": ats}
 
 
