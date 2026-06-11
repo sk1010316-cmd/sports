@@ -416,9 +416,12 @@ function render(){
     if(g.home.pitcher)notes.push(`<div class="row"><span class="ic">⚾</span><span>${g.home.abbr} 先發：${g.home.pitcher.name}${g.home.pitcher.era?`（ERA ${g.home.pitcher.era}）`:''}</span></div>`);
 
     let vClass,vHtml;
+    const favSide = r.pHome>=0.5?'home':'away';   // 模型看好的隊
     if(r.edge==null){vClass='noodds';vHtml=`<span class="tag">需賠率</span> 未提供賠率，無法判斷價值（在上方貼金鑰）`;}
-    else if(r.edge>=EDGE_THRESHOLD){const team=r.side==='home'?`${g.home.abbr} ${hzh}`:`${g.away.abbr} ${azh}`;
+    else if(r.edge>=EDGE_THRESHOLD && r.side===favSide){const team=r.side==='home'?`${g.home.abbr} ${hzh}`:`${g.away.abbr} ${azh}`;
       vClass='bet';vHtml=`<span class="tag">值得下注</span> 模型比盤口高 ${pct(r.edge)} → 可考慮下注 <b>${team}</b>`;}
+    else if(r.edge>=EDGE_THRESHOLD && r.side!==favSide){
+      vClass='skip';vHtml=`<span class="tag">略過</span> 價差在受讓方、與看好方相反 → 不可信，略過`;}
     else{vClass='skip';vHtml=`<span class="tag">略過</span> 無明顯價值（edge ${pct(r.edge)}）→ 建議略過`;}
 
     // 預測比分 + 信心高低（更精細顯示）
