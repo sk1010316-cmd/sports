@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-16T23:02+08:00",
+ "generated": "2026-06-17T00:11+08:00",
  "model": "power-rating+pitcher-v2",
  "nba": [],
  "mlb": [
@@ -53,8 +53,8 @@
     "PHI": []
    },
    "_odds": {
-    "home": 0.6115595737810785,
-    "away": 0.38844042621892155
+    "home": 0.6116013775290573,
+    "away": 0.38839862247094276
    },
    "market": {
     "spreadHome": -1.5,
@@ -62,7 +62,7 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5587,
+    "pHome": 0.5588,
     "predMargin": 0.665,
     "pickSU": "home",
     "blended": true,
@@ -123,8 +123,8 @@
     "WSH": []
    },
    "_odds": {
-    "home": 0.5564489112227805,
-    "away": 0.4435510887772194
+    "home": 0.5584198192166053,
+    "away": 0.44158018078339467
    },
    "market": {
     "spreadHome": -1.5,
@@ -132,11 +132,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5573,
-    "predMargin": 0.649,
+    "pHome": 0.5589,
+    "predMargin": 0.667,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0009,
+    "edge": 0.0005,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -193,8 +193,8 @@
     "BOS": []
    },
    "_odds": {
-    "home": 0.47730352303523044,
-    "away": 0.5226964769647696
+    "home": 0.47887005649717523,
+    "away": 0.5211299435028248
    },
    "market": {
     "spreadHome": 1.5,
@@ -202,11 +202,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.4997,
-    "predMargin": -0.003,
-    "pickSU": "away",
+    "pHome": 0.5009,
+    "predMargin": 0.011,
+    "pickSU": "home",
     "blended": true,
-    "edge": 0.0224,
+    "edge": 0.0221,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": 1.5,
@@ -263,20 +263,20 @@
     "NYY": []
    },
    "_odds": {
-    "home": 0.5671043845982638,
-    "away": 0.43289561540173604
+    "home": 0.5658172916434852,
+    "away": 0.434182708356515
    },
    "market": {
     "spreadHome": -1.5,
-    "total": 8.0,
+    "total": 7.5,
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5667,
-    "predMargin": 0.756,
+    "pHome": 0.5657,
+    "predMargin": 0.744,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0004,
+    "edge": 0.0001,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -333,8 +333,8 @@
     "CIN": []
    },
    "_odds": {
-    "home": 0.46985635109150553,
-    "away": 0.5301436489084945
+    "home": 0.46995586737580625,
+    "away": 0.5300441326241938
    },
    "market": {
     "spreadHome": 1.5,
@@ -343,7 +343,7 @@
    },
    "pre": {
     "pHome": 0.4806,
-    "predMargin": -0.219,
+    "predMargin": -0.218,
     "pickSU": "away",
     "blended": true,
     "edge": 0.0107,
@@ -403,8 +403,8 @@
     "ATL": []
    },
    "_odds": {
-    "home": 0.5979527387563977,
-    "away": 0.40204726124360235
+    "home": 0.6031453362255965,
+    "away": 0.39685466377440365
    },
    "market": {
     "spreadHome": -1.5,
@@ -412,12 +412,12 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.599,
-    "predMargin": 1.128,
+    "pHome": 0.6031,
+    "predMargin": 1.176,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.001,
-    "edgeSide": "home",
+    "edge": 0.0,
+    "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
     "atsLean": "away"
@@ -473,8 +473,8 @@
     "MIL": []
    },
    "_odds": {
-    "home": 0.5829482948294831,
-    "away": 0.41705170517051704
+    "home": 0.5832324788205523,
+    "away": 0.41676752117944776
    },
    "market": {
     "spreadHome": -1.5,
@@ -482,11 +482,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5418,
-    "predMargin": 0.473,
+    "pHome": 0.5421,
+    "predMargin": 0.475,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0411,
+    "edge": 0.0412,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -543,8 +543,8 @@
     "STL": []
    },
    "_odds": {
-    "home": 0.5169683257918553,
-    "away": 0.4830316742081447
+    "home": 0.5189372526851329,
+    "away": 0.4810627473148671
    },
    "market": {
     "spreadHome": -1.5,
@@ -552,11 +552,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5109,
-    "predMargin": 0.123,
+    "pHome": 0.5125,
+    "predMargin": 0.141,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0061,
+    "edge": 0.0064,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -613,8 +613,8 @@
     "CHC": []
    },
    "_odds": {
-    "home": 0.6344718864950079,
-    "away": 0.3655281135049921
+    "home": 0.6358108816437782,
+    "away": 0.36418911835622175
    },
    "market": {
     "spreadHome": -1.5,
@@ -622,11 +622,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.595,
-    "predMargin": 1.082,
+    "pHome": 0.5961,
+    "predMargin": 1.095,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0395,
+    "edge": 0.0397,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -683,8 +683,8 @@
     "TEX": []
    },
    "_odds": {
-    "home": 0.5489866756242302,
-    "away": 0.4510133243757698
+    "home": 0.5468311833987662,
+    "away": 0.4531688166012338
    },
    "market": {
     "spreadHome": -1.5,
@@ -692,11 +692,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5562,
-    "predMargin": 0.636,
+    "pHome": 0.5545,
+    "predMargin": 0.616,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0072,
+    "edge": 0.0076,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -753,8 +753,8 @@
     "HOU": []
    },
    "_odds": {
-    "home": 0.5985624047048574,
-    "away": 0.40143759529514267
+    "home": 0.6129794778123993,
+    "away": 0.38702052218760064
    },
    "market": {
     "spreadHome": -1.5,
@@ -762,11 +762,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.597,
-    "predMargin": 1.105,
+    "pHome": 0.6085,
+    "predMargin": 1.24,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0016,
+    "edge": 0.0044,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -823,8 +823,8 @@
     "ARI": []
    },
    "_odds": {
-    "home": 0.5044117647058822,
-    "away": 0.4955882352941176
+    "home": 0.5048653541525232,
+    "away": 0.4951346458474769
    },
    "market": {
     "spreadHome": -1.5,
@@ -832,11 +832,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.4936,
-    "predMargin": -0.073,
+    "pHome": 0.4939,
+    "predMargin": -0.069,
     "pickSU": "away",
     "blended": true,
-    "edge": 0.0109,
+    "edge": 0.011,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -893,8 +893,8 @@
     "SEA": []
    },
    "_odds": {
-    "home": 0.5818723122725771,
-    "away": 0.41812768772742304
+    "home": 0.5821668687314009,
+    "away": 0.41783313126859906
    },
    "market": {
     "spreadHome": -1.5,
@@ -902,8 +902,8 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5674,
-    "predMargin": 0.764,
+    "pHome": 0.5676,
+    "predMargin": 0.767,
     "pickSU": "home",
     "blended": true,
     "edge": 0.0145,
@@ -963,8 +963,8 @@
     "ATH": []
    },
    "_odds": {
-    "home": 0.5570327337727629,
-    "away": 0.44296726622723714
+    "home": 0.5575290437890974,
+    "away": 0.4424709562109025
    },
    "market": {
     "spreadHome": -1.5,
@@ -972,11 +972,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5346,
-    "predMargin": 0.391,
+    "pHome": 0.535,
+    "predMargin": 0.396,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0224,
+    "edge": 0.0225,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1033,8 +1033,8 @@
     "LAD": []
    },
    "_odds": {
-    "home": 0.5757470465601111,
-    "away": 0.4242529534398888
+    "home": 0.5764379122786715,
+    "away": 0.42356208772132864
    },
    "market": {
     "spreadHome": -1.5,
@@ -1042,11 +1042,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5777,
-    "predMargin": 0.882,
+    "pHome": 0.5783,
+    "predMargin": 0.889,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.002,
+    "edge": 0.0018,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1103,8 +1103,8 @@
     "CIN": []
    },
    "_odds": {
-    "home": 0.46985635109150553,
-    "away": 0.5301436489084945
+    "home": 0.46995586737580625,
+    "away": 0.5300441326241938
    },
    "market": {
     "spreadHome": 1.5,
@@ -1113,7 +1113,7 @@
    },
    "pre": {
     "pHome": 0.4806,
-    "predMargin": -0.219,
+    "predMargin": -0.218,
     "pickSU": "away",
     "blended": true,
     "edge": 0.0107,
@@ -1173,8 +1173,8 @@
     "WSH": []
    },
    "_odds": {
-    "home": 0.5564489112227805,
-    "away": 0.4435510887772194
+    "home": 0.5584198192166053,
+    "away": 0.44158018078339467
    },
    "market": {
     "spreadHome": -1.5,
@@ -1182,11 +1182,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5573,
-    "predMargin": 0.649,
+    "pHome": 0.5589,
+    "predMargin": 0.667,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0009,
+    "edge": 0.0005,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1243,8 +1243,8 @@
     "PHI": []
    },
    "_odds": {
-    "home": 0.6115595737810785,
-    "away": 0.38844042621892155
+    "home": 0.6116013775290573,
+    "away": 0.38839862247094276
    },
    "market": {
     "spreadHome": -1.5,
@@ -1252,7 +1252,7 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5587,
+    "pHome": 0.5588,
     "predMargin": 0.665,
     "pickSU": "home",
     "blended": true,
@@ -1313,8 +1313,8 @@
     "HOU": []
    },
    "_odds": {
-    "home": 0.5985624047048574,
-    "away": 0.40143759529514267
+    "home": 0.6129794778123993,
+    "away": 0.38702052218760064
    },
    "market": {
     "spreadHome": -1.5,
@@ -1322,11 +1322,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.597,
-    "predMargin": 1.105,
+    "pHome": 0.6085,
+    "predMargin": 1.24,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0016,
+    "edge": 0.0044,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1379,8 +1379,8 @@
     "STL": []
    },
    "_odds": {
-    "home": 0.5169683257918553,
-    "away": 0.4830316742081447
+    "home": 0.5189372526851329,
+    "away": 0.4810627473148671
    },
    "market": {
     "spreadHome": -1.5,
@@ -1388,11 +1388,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5109,
-    "predMargin": 0.123,
+    "pHome": 0.5125,
+    "predMargin": 0.141,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0061,
+    "edge": 0.0064,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1449,8 +1449,8 @@
     "LAD": []
    },
    "_odds": {
-    "home": 0.5757470465601111,
-    "away": 0.4242529534398888
+    "home": 0.5764379122786715,
+    "away": 0.42356208772132864
    },
    "market": {
     "spreadHome": -1.5,
@@ -1458,11 +1458,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5777,
-    "predMargin": 0.882,
+    "pHome": 0.5783,
+    "predMargin": 0.889,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.002,
+    "edge": 0.0018,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1519,8 +1519,8 @@
     "ARI": []
    },
    "_odds": {
-    "home": 0.5044117647058822,
-    "away": 0.4955882352941176
+    "home": 0.5048653541525232,
+    "away": 0.4951346458474769
    },
    "market": {
     "spreadHome": -1.5,
@@ -1528,11 +1528,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.4936,
-    "predMargin": -0.073,
+    "pHome": 0.4939,
+    "predMargin": -0.069,
     "pickSU": "away",
     "blended": true,
-    "edge": 0.0109,
+    "edge": 0.011,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1589,8 +1589,8 @@
     "BOS": []
    },
    "_odds": {
-    "home": 0.47730352303523044,
-    "away": 0.5226964769647696
+    "home": 0.47887005649717523,
+    "away": 0.5211299435028248
    },
    "market": {
     "spreadHome": 1.5,
@@ -1598,11 +1598,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.4997,
-    "predMargin": -0.003,
-    "pickSU": "away",
+    "pHome": 0.5009,
+    "predMargin": 0.011,
+    "pickSU": "home",
     "blended": true,
-    "edge": 0.0224,
+    "edge": 0.0221,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": 1.5,
@@ -1659,20 +1659,20 @@
     "NYY": []
    },
    "_odds": {
-    "home": 0.5671043845982638,
-    "away": 0.43289561540173604
+    "home": 0.5658172916434852,
+    "away": 0.434182708356515
    },
    "market": {
     "spreadHome": -1.5,
-    "total": 8.0,
+    "total": 7.5,
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5667,
-    "predMargin": 0.756,
+    "pHome": 0.5657,
+    "predMargin": 0.744,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0004,
+    "edge": 0.0001,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1729,8 +1729,8 @@
     "ATL": []
    },
    "_odds": {
-    "home": 0.5979527387563977,
-    "away": 0.40204726124360235
+    "home": 0.6031453362255965,
+    "away": 0.39685466377440365
    },
    "market": {
     "spreadHome": -1.5,
@@ -1738,12 +1738,12 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.599,
-    "predMargin": 1.128,
+    "pHome": 0.6031,
+    "predMargin": 1.176,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.001,
-    "edgeSide": "home",
+    "edge": 0.0,
+    "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
     "atsLean": "away"
@@ -1799,8 +1799,8 @@
     "MIL": []
    },
    "_odds": {
-    "home": 0.5829482948294831,
-    "away": 0.41705170517051704
+    "home": 0.5832324788205523,
+    "away": 0.41676752117944776
    },
    "market": {
     "spreadHome": -1.5,
@@ -1808,11 +1808,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5418,
-    "predMargin": 0.473,
+    "pHome": 0.5421,
+    "predMargin": 0.475,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0411,
+    "edge": 0.0412,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1869,8 +1869,8 @@
     "CHC": []
    },
    "_odds": {
-    "home": 0.6344718864950079,
-    "away": 0.3655281135049921
+    "home": 0.6358108816437782,
+    "away": 0.36418911835622175
    },
    "market": {
     "spreadHome": -1.5,
@@ -1878,11 +1878,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.595,
-    "predMargin": 1.082,
+    "pHome": 0.5961,
+    "predMargin": 1.095,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0395,
+    "edge": 0.0397,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1939,8 +1939,8 @@
     "SEA": []
    },
    "_odds": {
-    "home": 0.5818723122725771,
-    "away": 0.41812768772742304
+    "home": 0.5821668687314009,
+    "away": 0.41783313126859906
    },
    "market": {
     "spreadHome": -1.5,
@@ -1948,8 +1948,8 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5674,
-    "predMargin": 0.764,
+    "pHome": 0.5676,
+    "predMargin": 0.767,
     "pickSU": "home",
     "blended": true,
     "edge": 0.0145,
@@ -2009,8 +2009,8 @@
     "ATH": []
    },
    "_odds": {
-    "home": 0.5570327337727629,
-    "away": 0.44296726622723714
+    "home": 0.5575290437890974,
+    "away": 0.4424709562109025
    },
    "market": {
     "spreadHome": -1.5,
@@ -2018,11 +2018,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5346,
-    "predMargin": 0.391,
+    "pHome": 0.535,
+    "predMargin": 0.396,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0224,
+    "edge": 0.0225,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
