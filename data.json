@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-18T17:01+08:00",
+ "generated": "2026-06-18T20:00+08:00",
  "model": "power-rating+pitcher-v2",
  "nba": [],
  "mlb": [
@@ -53,8 +53,8 @@
     "BOS": []
    },
    "_odds": {
-    "home": 0.5310134448084963,
-    "away": 0.4689865551915037
+    "home": 0.5326933935629588,
+    "away": 0.4673066064370412
    },
    "market": {
     "spreadHome": -1.5,
@@ -62,11 +62,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5364,
-    "predMargin": 0.411,
+    "pHome": 0.5377,
+    "predMargin": 0.426,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0054,
+    "edge": 0.005,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -123,8 +123,8 @@
     "MIL": []
    },
    "_odds": {
-    "home": 0.5729178218919818,
-    "away": 0.42708217810801813
+    "home": 0.57449872604409,
+    "away": 0.4255012739559101
    },
    "market": {
     "spreadHome": -1.5,
@@ -132,11 +132,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5759,
-    "predMargin": 0.861,
+    "pHome": 0.5772,
+    "predMargin": 0.876,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.003,
+    "edge": 0.0027,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -193,8 +193,8 @@
     "TEX": []
    },
    "_odds": {
-    "home": 0.46611700926135086,
-    "away": 0.5338829907386491
+    "home": 0.4655386350817823,
+    "away": 0.5344613649182177
    },
    "market": {
     "spreadHome": 1.5,
@@ -202,11 +202,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.4805,
-    "predMargin": -0.22,
+    "pHome": 0.48,
+    "predMargin": -0.226,
     "pickSU": "away",
     "blended": true,
-    "edge": 0.0144,
+    "edge": 0.0145,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": 1.5,
@@ -263,8 +263,8 @@
     "SEA": []
    },
    "_odds": {
-    "home": 0.5815571507454445,
-    "away": 0.41844284925455555
+    "home": 0.5807734806629834,
+    "away": 0.41922651933701655
    },
    "market": {
     "spreadHome": -1.5,
@@ -272,11 +272,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.6005,
-    "predMargin": 1.146,
+    "pHome": 0.5999,
+    "predMargin": 1.139,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.019,
+    "edge": 0.0191,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -333,8 +333,8 @@
     "PHI": []
    },
    "_odds": {
-    "home": 0.5330545824386937,
-    "away": 0.46694541756130636
+    "home": 0.5320230430362588,
+    "away": 0.46797695696374125
    },
    "market": {
     "spreadHome": -1.5,
@@ -342,11 +342,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5226,
-    "predMargin": 0.255,
+    "pHome": 0.5217,
+    "predMargin": 0.245,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0105,
+    "edge": 0.0103,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -403,8 +403,8 @@
     "NYY": []
    },
    "_odds": {
-    "home": 0.5841234840132303,
-    "away": 0.41587651598676967
+    "home": 0.5853712271425423,
+    "away": 0.4146287728574576
    },
    "market": {
     "spreadHome": -1.5,
@@ -412,11 +412,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5906,
-    "predMargin": 1.031,
+    "pHome": 0.5916,
+    "predMargin": 1.042,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0065,
+    "edge": 0.0062,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -473,8 +473,8 @@
     "ATL": []
    },
    "_odds": {
-    "home": 0.5617663499161543,
-    "away": 0.4382336500838458
+    "home": 0.5647570218457423,
+    "away": 0.4352429781542577
    },
    "market": {
     "spreadHome": -1.5,
@@ -482,11 +482,11 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5815,
-    "predMargin": 0.926,
+    "pHome": 0.5839,
+    "predMargin": 0.954,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0197,
+    "edge": 0.0191,
     "edgeSide": "home",
     "isValue": false,
     "spreadHome": -1.5,
@@ -543,8 +543,8 @@
     "KC": []
    },
    "_odds": {
-    "home": 0.5235453928005435,
-    "away": 0.4764546071994566
+    "home": 0.5234375000000001,
+    "away": 0.4765625
    },
    "market": {
     "spreadHome": -1.5,
@@ -552,8 +552,8 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5211,
-    "predMargin": 0.238,
+    "pHome": 0.521,
+    "predMargin": 0.237,
     "pickSU": "home",
     "blended": true,
     "edge": 0.0025,
@@ -613,20 +613,20 @@
     "ATH": []
    },
    "_odds": {
-    "home": 0.5491696938245978,
-    "away": 0.4508303061754022
+    "home": 0.5507068223724647,
+    "away": 0.44929317762753535
    },
    "market": {
     "spreadHome": -1.5,
-    "total": 9.8,
-    "book": "國際均盤"
+    "total": 10.0,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5319,
-    "predMargin": 0.36,
+    "pHome": 0.5331,
+    "predMargin": 0.374,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0173,
+    "edge": 0.0176,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
@@ -1182,8 +1182,8 @@
     "KC": []
    },
    "_odds": {
-    "home": 0.5235453928005435,
-    "away": 0.4764546071994566
+    "home": 0.5234375000000001,
+    "away": 0.4765625
    },
    "market": {
     "spreadHome": -1.5,
@@ -1191,8 +1191,8 @@
     "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5211,
-    "predMargin": 0.238,
+    "pHome": 0.521,
+    "predMargin": 0.237,
     "pickSU": "home",
     "blended": true,
     "edge": 0.0025,
@@ -1311,20 +1311,20 @@
     "ATH": []
    },
    "_odds": {
-    "home": 0.5491696938245978,
-    "away": 0.4508303061754022
+    "home": 0.5507068223724647,
+    "away": 0.44929317762753535
    },
    "market": {
     "spreadHome": -1.5,
-    "total": 9.8,
-    "book": "國際均盤"
+    "total": 10.0,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5319,
-    "predMargin": 0.36,
+    "pHome": 0.5331,
+    "predMargin": 0.374,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0173,
+    "edge": 0.0176,
     "edgeSide": "away",
     "isValue": false,
     "spreadHome": -1.5,
