@@ -1,83 +1,50 @@
 {
- "generated": "2026-07-13T06:55+08:00",
+ "generated": "2026-07-14T06:59+08:00",
  "model": "power-rating+pitcher-v2",
  "nba": [],
  "mlb": [
   {
-   "id": "401816138",
-   "state": "in",
-   "date": "2026-07-12",
-   "start": "2026-07-12T20:10Z",
+   "id": "401817370",
+   "state": "pre",
+   "date": "2026-07-15",
+   "start": "2026-07-15T00:00Z",
    "away": {
-    "abbr": "ARI",
-    "nick": "Diamondbacks",
-    "name": "Arizona Diamondbacks",
+    "abbr": "AL",
+    "nick": "All-Stars",
+    "name": "American All-Stars",
     "pitcher": {
-     "name": "Mitch Bratt",
-     "era": "3.00・已計入",
-     "eraNum": 3.0
+     "name": "Dylan Cease",
+     "era": "2.56",
+     "eraNum": 2.56
     }
    },
    "home": {
-    "abbr": "LAD",
-    "nick": "Dodgers",
-    "name": "Los Angeles Dodgers",
+    "abbr": "NL",
+    "nick": "All-Stars",
+    "name": "National All-Stars",
     "pitcher": {
-     "name": "Emmet Sheehan",
-     "era": "4.91・已計入",
-     "eraNum": 4.91
+     "name": "Cristopher Sanchez",
+     "era": "2.62",
+     "eraNum": 2.62
     }
    },
    "_s": {
-    "a": {
-     "margin": 0.603,
-     "pf": 4.33,
-     "pa": 4.48,
-     "gp": 95,
-     "w": 2,
-     "l": 5,
-     "pAdj": 0.6
-    },
-    "h": {
-     "margin": -0.43,
-     "pf": 5.24,
-     "pa": 3.67,
-     "gp": 96,
-     "w": 1,
-     "l": 0,
-     "pAdj": -0.45
-    }
+    "a": {},
+    "h": {}
    },
    "inj": {
-    "ARI": [],
-    "LAD": []
+    "AL": [],
+    "NL": []
    },
-   "_odds": {
-    "home": 0.22744817726947822,
-    "away": 0.7725518227305217
-   },
-   "market": {
-    "spreadHome": 1.0,
-    "total": 7.5,
-    "book": "Pinnacle"
-   },
-   "pre": {
-    "pHome": 0.2713,
-    "predMargin": -2.74,
-    "pickSU": "away",
-    "blended": true,
-    "edge": 0.0438,
-    "edgeSide": "home",
-    "isValue": false,
-    "spreadHome": 1.0,
-    "atsLean": "away"
-   }
+   "_odds": null,
+   "market": null,
+   "pre": null
   }
  ],
  "stats": {
   "su": [
    209,
-   190
+   191
   ],
   "value": [
    3,
@@ -85,7 +52,7 @@
   ],
   "ats": [
    172,
-   123
+   124
   ]
  },
  "recent": [
@@ -324,6 +291,26 @@
    "isValue": false,
    "edge": 0.0332,
    "edgeSide": "away",
+   "valueHit": null,
+   "spreadHome": -1.5,
+   "atsLean": "home",
+   "atsHit": false
+  },
+  {
+   "lg": "mlb",
+   "date": "2026-07-12",
+   "start": "2026-07-12T20:10Z",
+   "away": "ARI",
+   "home": "LAD",
+   "awayScore": 5,
+   "homeScore": 3,
+   "winner": "away",
+   "pickSU": "home",
+   "pHome": 0.6424,
+   "suHit": false,
+   "isValue": false,
+   "edge": 0.0069,
+   "edgeSide": "home",
    "valueHit": null,
    "spreadHome": -1.5,
    "atsLean": "home",
@@ -1268,26 +1255,6 @@
    "spreadHome": -1.5,
    "atsLean": "away",
    "atsHit": true
-  },
-  {
-   "lg": "mlb",
-   "date": "2026-07-09",
-   "start": "2026-07-09T22:35Z",
-   "away": "CHC",
-   "home": "BAL",
-   "awayScore": 2,
-   "homeScore": 3,
-   "winner": "home",
-   "pickSU": "home",
-   "pHome": 0.5644,
-   "suHit": true,
-   "isValue": false,
-   "edge": 0.0241,
-   "edgeSide": "home",
-   "valueHit": null,
-   "spreadHome": -1.5,
-   "atsLean": "away",
-   "atsHit": true
   }
  ],
  "_history": {
@@ -1642,7 +1609,7 @@
    "start": "2026-07-12T20:10Z",
    "away": "ARI",
    "home": "LAD",
-   "graded": false,
+   "graded": true,
    "pHome": 0.6424,
    "predMargin": 1.642,
    "pickSU": "home",
@@ -1651,7 +1618,13 @@
    "edgeSide": "home",
    "isValue": false,
    "spreadHome": -1.5,
-   "atsLean": "home"
+   "atsLean": "home",
+   "homeScore": 3,
+   "awayScore": 5,
+   "winner": "away",
+   "suHit": false,
+   "atsHit": false,
+   "valueHit": null
   },
   "mlb:401816140": {
    "lg": "mlb",
