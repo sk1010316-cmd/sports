@@ -1,50 +1,83 @@
 {
- "generated": "2026-07-15T07:00+08:00",
+ "generated": "2026-07-16T07:00+08:00",
  "model": "power-rating+pitcher-v2",
  "nba": [],
  "mlb": [
   {
-   "id": "401817370",
+   "id": "401816143",
    "state": "pre",
-   "date": "2026-07-15",
-   "start": "2026-07-15T00:00Z",
+   "date": "2026-07-16",
+   "start": "2026-07-16T23:00Z",
    "away": {
-    "abbr": "AL",
-    "nick": "All-Stars",
-    "name": "American All-Stars",
+    "abbr": "NYM",
+    "nick": "Mets",
+    "name": "New York Mets",
     "pitcher": {
-     "name": "Dylan Cease",
-     "era": "2.56",
-     "eraNum": 2.56
+     "name": "Christian Scott",
+     "era": "3.17・已計入",
+     "eraNum": 3.17
     }
    },
    "home": {
-    "abbr": "NL",
-    "nick": "All-Stars",
-    "name": "National All-Stars",
+    "abbr": "PHI",
+    "nick": "Phillies",
+    "name": "Philadelphia Phillies",
     "pitcher": {
-     "name": "Cristopher Sanchez",
-     "era": "2.62",
-     "eraNum": 2.62
+     "name": "Aaron Nola",
+     "era": "5.75・已計入",
+     "eraNum": 5.75
     }
    },
    "_s": {
-    "a": {},
-    "h": {}
+    "a": {
+     "margin": 0.504,
+     "pf": 4.1,
+     "pa": 4.77,
+     "gp": 97,
+     "w": 8,
+     "l": 7,
+     "pAdj": 0.51
+    },
+    "h": {
+     "margin": -0.909,
+     "pf": 4.37,
+     "pa": 4.47,
+     "gp": 97,
+     "w": 4,
+     "l": 3,
+     "pAdj": -0.91
+    }
    },
    "inj": {
-    "AL": [],
-    "NL": []
+    "NYM": [],
+    "PHI": []
    },
-   "_odds": null,
-   "market": null,
-   "pre": null
+   "_odds": {
+    "home": 0.5452854751720291,
+    "away": 0.454714524827971
+   },
+   "market": {
+    "spreadHome": -1.5,
+    "total": 9.5,
+    "book": "Pinnacle"
+   },
+   "pre": {
+    "pHome": 0.52,
+    "predMargin": 0.226,
+    "pickSU": "home",
+    "blended": true,
+    "edge": 0.0253,
+    "edgeSide": "away",
+    "isValue": false,
+    "spreadHome": -1.5,
+    "atsLean": "away"
+   }
   }
  ],
  "stats": {
   "su": [
    209,
-   191
+   190
   ],
   "value": [
    3,
@@ -1258,6 +1291,23 @@
   }
  ],
  "_history": {
+  "mlb:401816143": {
+   "lg": "mlb",
+   "date": "2026-07-16",
+   "start": "2026-07-16T23:00Z",
+   "away": "NYM",
+   "home": "PHI",
+   "graded": false,
+   "pHome": 0.52,
+   "predMargin": 0.226,
+   "pickSU": "home",
+   "blended": true,
+   "edge": 0.0253,
+   "edgeSide": "away",
+   "isValue": false,
+   "spreadHome": -1.5,
+   "atsLean": "away"
+  },
   "mlb:401816125": {
    "lg": "mlb",
    "date": "2026-07-12",
@@ -10433,29 +10483,6 @@
    "winner": "away",
    "suHit": false,
    "atsHit": true,
-   "valueHit": null
-  },
-  "mlb:401815727": {
-   "lg": "mlb",
-   "date": "2026-06-13",
-   "start": "2026-06-13T00:10Z",
-   "away": "HOU",
-   "home": "KC",
-   "graded": true,
-   "pHome": 0.5812,
-   "predMargin": 0.922,
-   "pickSU": "home",
-   "blended": false,
-   "edge": null,
-   "edgeSide": null,
-   "isValue": false,
-   "spreadHome": null,
-   "atsLean": null,
-   "homeScore": 8,
-   "awayScore": 10,
-   "winner": "away",
-   "suHit": false,
-   "atsHit": null,
    "valueHit": null
   }
  }
