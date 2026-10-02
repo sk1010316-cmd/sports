@@ -1,11 +1,80 @@
 {
- "generated": "2026-10-01T09:09+08:00",
+ "generated": "2026-10-02T09:27+08:00",
  "model": "power-rating+pitcher-v2",
  "nba": [],
- "mlb": [],
+ "mlb": [
+  {
+   "id": "401907973",
+   "state": "in",
+   "date": "2026-10-02",
+   "start": "2026-10-02T00:00Z",
+   "away": {
+    "abbr": "PHI",
+    "nick": "Phillies",
+    "name": "Philadelphia Phillies",
+    "pitcher": {
+     "name": "Aaron Nola",
+     "era": null,
+     "eraNum": null
+    }
+   },
+   "home": {
+    "abbr": "ATL",
+    "nick": "Braves",
+    "name": "Atlanta Braves",
+    "pitcher": {
+     "name": "Ray Kerr",
+     "era": null,
+     "eraNum": null
+    }
+   },
+   "_s": {
+    "a": {
+     "margin": 0.001,
+     "pf": 4.4,
+     "pa": 4.31,
+     "gp": 162,
+     "w": 7,
+     "l": 6
+    },
+    "h": {
+     "margin": 0.004,
+     "pf": 4.58,
+     "pa": 3.86,
+     "gp": 162,
+     "w": 8,
+     "l": 6
+    }
+   },
+   "inj": {
+    "PHI": [],
+    "ATL": []
+   },
+   "_odds": {
+    "home": 0.8633861551292745,
+    "away": 0.13661384487072564
+   },
+   "market": {
+    "spreadHome": -2.5,
+    "total": 7.5,
+    "book": "Pinnacle"
+   },
+   "pre": {
+    "pHome": 0.7952,
+    "predMargin": 3.71,
+    "pickSU": "home",
+    "blended": true,
+    "edge": 0.0682,
+    "edgeSide": "away",
+    "isValue": false,
+    "spreadHome": -2.5,
+    "atsLean": "home"
+   }
+  }
+ ],
  "stats": {
   "su": [
-   211,
+   210,
    166
   ],
   "value": [
@@ -13,7 +82,7 @@
    4
   ],
   "ats": [
-   193,
+   192,
    155
   ]
  },
@@ -1220,6 +1289,23 @@
   }
  ],
  "_history": {
+  "mlb:401907973": {
+   "lg": "mlb",
+   "date": "2026-10-02",
+   "start": "2026-10-02T00:00Z",
+   "away": "PHI",
+   "home": "ATL",
+   "graded": false,
+   "pHome": 0.7952,
+   "predMargin": 3.71,
+   "pickSU": "home",
+   "blended": true,
+   "edge": 0.0682,
+   "edgeSide": "away",
+   "isValue": false,
+   "spreadHome": -2.5,
+   "atsLean": "home"
+  },
   "mlb:401816391": {
    "lg": "mlb",
    "date": "2026-08-05",
@@ -10256,29 +10342,6 @@
    "awayScore": 3,
    "winner": "away",
    "suHit": false,
-   "atsHit": true,
-   "valueHit": null
-  },
-  "mlb:401816023": {
-   "lg": "mlb",
-   "date": "2026-07-04",
-   "start": "2026-07-04T23:10Z",
-   "away": "TB",
-   "home": "HOU",
-   "graded": true,
-   "pHome": 0.5001,
-   "predMargin": 0.001,
-   "pickSU": "home",
-   "blended": true,
-   "edge": 0.0011,
-   "edgeSide": "away",
-   "isValue": false,
-   "spreadHome": 1.5,
-   "atsLean": "home",
-   "homeScore": 10,
-   "awayScore": 8,
-   "winner": "home",
-   "suHit": true,
    "atsHit": true,
    "valueHit": null
   }
