@@ -1,190 +1,10 @@
 {
- "generated": "2026-10-30T09:44+08:00",
+ "generated": "2026-10-31T09:27+08:00",
  "model": "power-rating+pitcher-v2",
  "nba": [
   {
-   "id": "401909893",
-   "state": "in",
-   "date": "2026-10-30",
-   "start": "2026-10-30T00:00Z",
-   "away": {
-    "abbr": "CLE",
-    "nick": "Cavaliers",
-    "name": "Cleveland Cavaliers",
-    "pitcher": null
-   },
-   "home": {
-    "abbr": "ATL",
-    "nick": "Hawks",
-    "name": "Atlanta Hawks",
-    "pitcher": null
-   },
-   "_s": {
-    "a": {
-     "margin": 2.0,
-     "pf": 119.75,
-     "pa": 117.75,
-     "gp": 1,
-     "w": 3,
-     "l": 1
-    },
-    "h": {
-     "margin": 5.0,
-     "pf": 120.2,
-     "pa": 115.2,
-     "gp": 1,
-     "w": 2,
-     "l": 3
-    }
-   },
-   "inj": {
-    "CLE": [],
-    "ATL": []
-   },
-   "_odds": {
-    "home": 0.6529336734693877,
-    "away": 0.3470663265306122
-   },
-   "market": {
-    "spreadHome": -5.0,
-    "total": 226.5,
-    "book": "Pinnacle"
-   },
-   "pre": {
-    "pHome": 0.6416,
-    "predMargin": 4.354,
-    "pickSU": "home",
-    "blended": true,
-    "edge": 0.0113,
-    "edgeSide": "away",
-    "isValue": false,
-    "spreadHome": -5.0,
-    "atsLean": "away"
-   }
-  },
-  {
-   "id": "401909894",
-   "state": "in",
-   "date": "2026-10-30",
-   "start": "2026-10-30T00:00Z",
-   "away": {
-    "abbr": "SAC",
-    "nick": "Kings",
-    "name": "Sacramento Kings",
-    "pitcher": null
-   },
-   "home": {
-    "abbr": "NO",
-    "nick": "Pelicans",
-    "name": "New Orleans Pelicans",
-    "pitcher": null
-   },
-   "_s": {
-    "a": {
-     "margin": -17.7,
-     "pf": 107.75,
-     "pa": 125.5,
-     "gp": 1,
-     "w": 0,
-     "l": 4
-    },
-    "h": {
-     "margin": -5.7,
-     "pf": 116.25,
-     "pa": 122.0,
-     "gp": 1,
-     "w": 0,
-     "l": 4
-    }
-   },
-   "inj": {
-    "SAC": [],
-    "NO": []
-   },
-   "_odds": {
-    "home": 0.9255671679836859,
-    "away": 0.07443283201631404
-   },
-   "market": {
-    "spreadHome": -10.5,
-    "total": 243.0,
-    "book": "Pinnacle"
-   },
-   "pre": {
-    "pHome": 0.8679,
-    "predMargin": 13.399,
-    "pickSU": "home",
-    "blended": true,
-    "edge": 0.0577,
-    "edgeSide": "away",
-    "isValue": false,
-    "spreadHome": -10.5,
-    "atsLean": "home"
-   }
-  },
-  {
-   "id": "401909895",
-   "state": "pre",
-   "date": "2026-10-30",
-   "start": "2026-10-30T02:00Z",
-   "away": {
-    "abbr": "MEM",
-    "nick": "Grizzlies",
-    "name": "Memphis Grizzlies",
-    "pitcher": null
-   },
-   "home": {
-    "abbr": "POR",
-    "nick": "Trail Blazers",
-    "name": "Portland Trail Blazers",
-    "pitcher": null
-   },
-   "_s": {
-    "a": {
-     "margin": 9.8,
-     "pf": 116.75,
-     "pa": 107.0,
-     "gp": 1,
-     "w": 4,
-     "l": 0
-    },
-    "h": {
-     "margin": 18.6,
-     "pf": 129.33,
-     "pa": 110.67,
-     "gp": 1,
-     "w": 3,
-     "l": 0
-    }
-   },
-   "inj": {
-    "MEM": [],
-    "POR": []
-   },
-   "_odds": {
-    "home": 0.7177721088435374,
-    "away": 0.28222789115646263
-   },
-   "market": {
-    "spreadHome": -7.5,
-    "total": 233.0,
-    "book": "Pinnacle"
-   },
-   "pre": {
-    "pHome": 0.6988,
-    "predMargin": 6.251,
-    "pickSU": "home",
-    "blended": true,
-    "edge": 0.019,
-    "edgeSide": "away",
-    "isValue": false,
-    "spreadHome": -7.5,
-    "atsLean": "away"
-   }
-  },
-  {
    "id": "401909277",
-   "state": "pre",
+   "state": "in",
    "date": "2026-10-30",
    "start": "2026-10-30T23:00Z",
    "away": {
@@ -222,29 +42,29 @@
     "WSH": []
    },
    "_odds": {
-    "home": 0.5219408723319634,
-    "away": 0.47805912766803665
+    "home": 0.972972972972973,
+    "away": 0.02702702702702703
    },
    "market": {
-    "spreadHome": -0.1,
-    "total": 222.5,
-    "book": "國際均盤"
+    "spreadHome": -19.5,
+    "total": 182.5,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5387,
-    "predMargin": 1.165,
+    "pHome": 0.8995,
+    "predMargin": 15.344,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0167,
-    "edgeSide": "home",
+    "edge": 0.0735,
+    "edgeSide": "away",
     "isValue": false,
-    "spreadHome": -0.1,
-    "atsLean": "home"
+    "spreadHome": -19.5,
+    "atsLean": "away"
    }
   },
   {
    "id": "401909278",
-   "state": "pre",
+   "state": "in",
    "date": "2026-10-30",
    "start": "2026-10-30T23:30Z",
    "away": {
@@ -282,29 +102,29 @@
     "BOS": []
    },
    "_odds": {
-    "home": 0.8442300556586271,
-    "away": 0.15576994434137292
+    "home": 0.9672131147540984,
+    "away": 0.03278688524590164
    },
    "market": {
-    "spreadHome": -15.7,
-    "total": 234.2,
-    "book": "國際均盤"
+    "spreadHome": -24.0,
+    "total": 237.0,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.8134,
-    "predMargin": 10.687,
+    "pHome": 0.9118,
+    "predMargin": 16.224,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0308,
+    "edge": 0.0554,
     "edgeSide": "away",
     "isValue": false,
-    "spreadHome": -15.7,
+    "spreadHome": -24.0,
     "atsLean": "away"
    }
   },
   {
    "id": "401909279",
-   "state": "pre",
+   "state": "in",
    "date": "2026-10-30",
    "start": "2026-10-30T23:30Z",
    "away": {
@@ -342,29 +162,29 @@
     "BKN": []
    },
    "_odds": {
-    "home": 0.2965762561138284,
-    "away": 0.7034237438861716
+    "home": 0.03589147633308006,
+    "away": 0.96410852366692
    },
    "market": {
-    "spreadHome": 7.2,
-    "total": 221.8,
-    "book": "國際均盤"
+    "spreadHome": 16.0,
+    "total": 210.0,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.3386,
-    "predMargin": -4.996,
+    "pHome": 0.13,
+    "predMargin": -13.514,
     "pickSU": "away",
     "blended": true,
-    "edge": 0.042,
+    "edge": 0.0942,
     "edgeSide": "home",
     "isValue": false,
-    "spreadHome": 7.2,
+    "spreadHome": 16.0,
     "atsLean": "home"
    }
   },
   {
    "id": "401909280",
-   "state": "pre",
+   "state": "in",
    "date": "2026-10-30",
    "start": "2026-10-30T23:30Z",
    "away": {
@@ -402,29 +222,29 @@
     "PHI": []
    },
    "_odds": {
-    "home": 0.47610830899920364,
-    "away": 0.5238916910007964
+    "home": 0.6924209962506697,
+    "away": 0.30757900374933045
    },
    "market": {
-    "spreadHome": 1.5,
-    "total": 229.1,
-    "book": "國際均盤"
+    "spreadHome": -5.0,
+    "total": 198.0,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.5004,
-    "predMargin": 0.011,
+    "pHome": 0.6734,
+    "predMargin": 5.392,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0242,
-    "edgeSide": "home",
+    "edge": 0.019,
+    "edgeSide": "away",
     "isValue": false,
-    "spreadHome": 1.5,
+    "spreadHome": -5.0,
     "atsLean": "home"
    }
   },
   {
    "id": "401909281",
-   "state": "pre",
+   "state": "in",
    "date": "2026-10-30",
    "start": "2026-10-30T23:30Z",
    "away": {
@@ -462,29 +282,29 @@
     "TOR": []
    },
    "_odds": {
-    "home": 0.6422624877571009,
-    "away": 0.35773751224289907
+    "home": 0.3038208168642952,
+    "away": 0.6961791831357048
    },
    "market": {
-    "spreadHome": -5.5,
-    "total": 225.0,
-    "book": "國際均盤"
+    "spreadHome": 5.0,
+    "total": 231.0,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.6546,
-    "predMargin": 4.773,
-    "pickSU": "home",
+    "pHome": 0.3838,
+    "predMargin": -3.545,
+    "pickSU": "away",
     "blended": true,
-    "edge": 0.0123,
+    "edge": 0.08,
     "edgeSide": "home",
     "isValue": false,
-    "spreadHome": -5.5,
-    "atsLean": "away"
+    "spreadHome": 5.0,
+    "atsLean": "home"
    }
   },
   {
    "id": "401909282",
-   "state": "pre",
+   "state": "in",
    "date": "2026-10-31",
    "start": "2026-10-31T00:00Z",
    "away": {
@@ -522,29 +342,29 @@
     "MIA": []
    },
    "_odds": {
-    "home": 0.691285611683026,
-    "away": 0.3087143883169739
+    "home": 0.8118497109826589,
+    "away": 0.18815028901734102
    },
    "market": {
-    "spreadHome": -6.2,
-    "total": 238.1,
-    "book": "國際均盤"
+    "spreadHome": -9.5,
+    "total": 249.5,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.662,
-    "predMargin": 5.016,
+    "pHome": 0.7585,
+    "predMargin": 8.417,
     "pickSU": "home",
     "blended": true,
-    "edge": 0.0293,
+    "edge": 0.0534,
     "edgeSide": "away",
     "isValue": false,
-    "spreadHome": -6.2,
+    "spreadHome": -9.5,
     "atsLean": "away"
    }
   },
   {
    "id": "401909283",
-   "state": "pre",
+   "state": "in",
    "date": "2026-10-31",
    "start": "2026-10-31T00:00Z",
    "away": {
@@ -582,29 +402,29 @@
     "DAL": []
    },
    "_odds": {
-    "home": 0.36023391812865496,
-    "away": 0.639766081871345
+    "home": 0.29076349578903765,
+    "away": 0.7092365042109624
    },
    "market": {
-    "spreadHome": 5.7,
-    "total": 227.5,
-    "book": "國際均盤"
+    "spreadHome": 8.0,
+    "total": 209.5,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.3932,
-    "predMargin": -3.251,
+    "pHome": 0.3376,
+    "predMargin": -5.027,
     "pickSU": "away",
     "blended": true,
-    "edge": 0.033,
+    "edge": 0.0469,
     "edgeSide": "home",
     "isValue": false,
-    "spreadHome": 5.7,
+    "spreadHome": 8.0,
     "atsLean": "home"
    }
   },
   {
    "id": "401909284",
-   "state": "pre",
+   "state": "in",
    "date": "2026-10-31",
    "start": "2026-10-31T00:00Z",
    "away": {
@@ -695,23 +515,23 @@
     "GS": []
    },
    "_odds": {
-    "home": 0.45768947755702716,
-    "away": 0.5423105224429727
+    "home": 0.4260774020266146,
+    "away": 0.5739225979733854
    },
    "market": {
-    "spreadHome": 2.1,
-    "total": 233.5,
-    "book": "國際均盤"
+    "spreadHome": 3.0,
+    "total": 234.0,
+    "book": "Pinnacle"
    },
    "pre": {
-    "pHome": 0.4719,
-    "predMargin": -0.845,
+    "pHome": 0.4467,
+    "predMargin": -1.61,
     "pickSU": "away",
     "blended": true,
-    "edge": 0.0143,
+    "edge": 0.0206,
     "edgeSide": "home",
     "isValue": false,
-    "spreadHome": 2.1,
+    "spreadHome": 3.0,
     "atsLean": "home"
    }
   },
@@ -755,43 +575,509 @@
     "PHX": []
    },
    "_odds": {
-    "home": 0.39671424723942894,
-    "away": 0.603285752760571
+    "home": 0.3911645629911884,
+    "away": 0.6088354370088116
    },
    "market": {
-    "spreadHome": 4.4,
-    "total": 230.3,
+    "spreadHome": 4.0,
+    "total": 231.5,
+    "book": "Pinnacle"
+   },
+   "pre": {
+    "pHome": 0.4189,
+    "predMargin": -2.456,
+    "pickSU": "away",
+    "blended": true,
+    "edge": 0.0277,
+    "edgeSide": "home",
+    "isValue": false,
+    "spreadHome": 4.0,
+    "atsLean": "home"
+   }
+  },
+  {
+   "id": "401909896",
+   "state": "pre",
+   "date": "2026-10-31",
+   "start": "2026-10-31T19:00Z",
+   "away": {
+    "abbr": "POR",
+    "nick": "Trail Blazers",
+    "name": "Portland Trail Blazers",
+    "pitcher": null
+   },
+   "home": {
+    "abbr": "UTAH",
+    "nick": "Jazz",
+    "name": "Utah Jazz",
+    "pitcher": null
+   },
+   "_s": {
+    "a": {
+     "margin": 8.8,
+     "pf": 122.75,
+     "pa": 114.0,
+     "gp": 1,
+     "w": 3,
+     "l": 1
+    },
+    "h": {
+     "margin": -7.8,
+     "pf": 112.4,
+     "pa": 120.2,
+     "gp": 1,
+     "w": 1,
+     "l": 4
+    }
+   },
+   "inj": {
+    "POR": [],
+    "UTAH": []
+   },
+   "_odds": {
+    "home": 0.33024555212468754,
+    "away": 0.6697544478753125
+   },
+   "market": {
+    "spreadHome": 6.3,
+    "total": 232.7,
     "book": "國際均盤"
    },
    "pre": {
-    "pHome": 0.4233,
-    "predMargin": -2.32,
+    "pHome": 0.3651,
+    "predMargin": -4.14,
     "pickSU": "away",
     "blended": true,
-    "edge": 0.0266,
+    "edge": 0.0348,
     "edgeSide": "home",
     "isValue": false,
-    "spreadHome": 4.4,
+    "spreadHome": 6.3,
     "atsLean": "home"
+   }
+  },
+  {
+   "id": "401909897",
+   "state": "pre",
+   "date": "2026-10-31",
+   "start": "2026-10-31T22:00Z",
+   "away": {
+    "abbr": "PHI",
+    "nick": "76ers",
+    "name": "Philadelphia 76ers",
+    "pitcher": null
+   },
+   "home": {
+    "abbr": "CHA",
+    "nick": "Hornets",
+    "name": "Charlotte Hornets",
+    "pitcher": null
+   },
+   "_s": {
+    "a": {
+     "margin": 3.4,
+     "pf": 110.8,
+     "pa": 107.4,
+     "gp": 1,
+     "w": 4,
+     "l": 1
+    },
+    "h": {
+     "margin": -7.2,
+     "pf": 101.0,
+     "pa": 108.2,
+     "gp": 1,
+     "w": 3,
+     "l": 2
+    }
+   },
+   "inj": {
+    "PHI": [],
+    "CHA": []
+   },
+   "_odds": null,
+   "market": null,
+   "pre": {
+    "pHome": 0.5327,
+    "predMargin": 0.986,
+    "pickSU": "home",
+    "blended": false,
+    "edge": null,
+    "edgeSide": null,
+    "isValue": false,
+    "spreadHome": null,
+    "atsLean": null
+   }
+  },
+  {
+   "id": "401909898",
+   "state": "pre",
+   "date": "2026-10-31",
+   "start": "2026-10-31T23:00Z",
+   "away": {
+    "abbr": "ATL",
+    "nick": "Hawks",
+    "name": "Atlanta Hawks",
+    "pitcher": null
+   },
+   "home": {
+    "abbr": "NO",
+    "nick": "Pelicans",
+    "name": "New Orleans Pelicans",
+    "pitcher": null
+   },
+   "_s": {
+    "a": {
+     "margin": 4.7,
+     "pf": 119.17,
+     "pa": 114.5,
+     "gp": 1,
+     "w": 3,
+     "l": 3
+    },
+    "h": {
+     "margin": -2.2,
+     "pf": 119.4,
+     "pa": 121.6,
+     "gp": 1,
+     "w": 1,
+     "l": 4
+    }
+   },
+   "inj": {
+    "ATL": [],
+    "NO": []
+   },
+   "_odds": {
+    "home": 0.4119258662369058,
+    "away": 0.5880741337630943
+   },
+   "market": {
+    "spreadHome": 4.0,
+    "total": 238.6,
+    "book": "國際均盤"
+   },
+   "pre": {
+    "pHome": 0.4396,
+    "predMargin": -1.824,
+    "pickSU": "away",
+    "blended": true,
+    "edge": 0.0277,
+    "edgeSide": "home",
+    "isValue": false,
+    "spreadHome": 4.0,
+    "atsLean": "home"
+   }
+  },
+  {
+   "id": "401909899",
+   "state": "pre",
+   "date": "2026-11-01",
+   "start": "2026-11-01T00:00Z",
+   "away": {
+    "abbr": "SAC",
+    "nick": "Kings",
+    "name": "Sacramento Kings",
+    "pitcher": null
+   },
+   "home": {
+    "abbr": "MEM",
+    "nick": "Grizzlies",
+    "name": "Memphis Grizzlies",
+    "pitcher": null
+   },
+   "_s": {
+    "a": {
+     "margin": -16.6,
+     "pf": 110.2,
+     "pa": 126.8,
+     "gp": 1,
+     "w": 0,
+     "l": 5
+    },
+    "h": {
+     "margin": 12.0,
+     "pf": 118.2,
+     "pa": 106.2,
+     "gp": 1,
+     "w": 5,
+     "l": 0
+    }
+   },
+   "inj": {
+    "SAC": [],
+    "MEM": []
+   },
+   "_odds": {
+    "home": 0.7801280585410473,
+    "away": 0.2198719414589527
+   },
+   "market": {
+    "spreadHome": -10.7,
+    "total": 234.2,
+    "book": "國際均盤"
+   },
+   "pre": {
+    "pHome": 0.7658,
+    "predMargin": 8.701,
+    "pickSU": "home",
+    "blended": true,
+    "edge": 0.0143,
+    "edgeSide": "away",
+    "isValue": false,
+    "spreadHome": -10.7,
+    "atsLean": "away"
+   }
+  },
+  {
+   "id": "401909900",
+   "state": "pre",
+   "date": "2026-11-01",
+   "start": "2026-11-01T00:00Z",
+   "away": {
+    "abbr": "CLE",
+    "nick": "Cavaliers",
+    "name": "Cleveland Cavaliers",
+    "pitcher": null
+   },
+   "home": {
+    "abbr": "MIL",
+    "nick": "Bucks",
+    "name": "Milwaukee Bucks",
+    "pitcher": null
+   },
+   "_s": {
+    "a": {
+     "margin": 1.0,
+     "pf": 118.0,
+     "pa": 117.0,
+     "gp": 1,
+     "w": 3,
+     "l": 2
+    },
+    "h": {
+     "margin": -10.8,
+     "pf": 113.4,
+     "pa": 124.2,
+     "gp": 1,
+     "w": 1,
+     "l": 4
+    }
+   },
+   "inj": {
+    "CLE": [],
+    "MIL": []
+   },
+   "_odds": {
+    "home": 0.2591408846842241,
+    "away": 0.740859115315776
+   },
+   "market": {
+    "spreadHome": 8.8,
+    "total": 236.3,
+    "book": "國際均盤"
+   },
+   "pre": {
+    "pHome": 0.3127,
+    "predMargin": -5.858,
+    "pickSU": "away",
+    "blended": true,
+    "edge": 0.0536,
+    "edgeSide": "home",
+    "isValue": false,
+    "spreadHome": 8.8,
+    "atsLean": "home"
+   }
+  },
+  {
+   "id": "401909901",
+   "state": "pre",
+   "date": "2026-11-01",
+   "start": "2026-11-01T00:00Z",
+   "away": {
+    "abbr": "MIN",
+    "nick": "Timberwolves",
+    "name": "Minnesota Timberwolves",
+    "pitcher": null
+   },
+   "home": {
+    "abbr": "SA",
+    "nick": "Spurs",
+    "name": "San Antonio Spurs",
+    "pitcher": null
+   },
+   "_s": {
+    "a": {
+     "margin": 12.6,
+     "pf": 120.4,
+     "pa": 107.8,
+     "gp": 1,
+     "w": 3,
+     "l": 2
+    },
+    "h": {
+     "margin": 6.6,
+     "pf": 116.6,
+     "pa": 110.0,
+     "gp": 1,
+     "w": 3,
+     "l": 2
+    }
+   },
+   "inj": {
+    "MIN": [],
+    "SA": []
+   },
+   "_odds": {
+    "home": 0.804732824427481,
+    "away": 0.19526717557251907
+   },
+   "market": {
+    "spreadHome": -12.3,
+    "total": 226.6,
+    "book": "國際均盤"
+   },
+   "pre": {
+    "pHome": 0.7547,
+    "predMargin": 8.271,
+    "pickSU": "home",
+    "blended": true,
+    "edge": 0.0501,
+    "edgeSide": "away",
+    "isValue": false,
+    "spreadHome": -12.3,
+    "atsLean": "away"
+   }
+  },
+  {
+   "id": "401909902",
+   "state": "pre",
+   "date": "2026-11-01",
+   "start": "2026-11-01T00:30Z",
+   "away": {
+    "abbr": "OKC",
+    "nick": "Thunder",
+    "name": "Oklahoma City Thunder",
+    "pitcher": null
+   },
+   "home": {
+    "abbr": "HOU",
+    "nick": "Rockets",
+    "name": "Houston Rockets",
+    "pitcher": null
+   },
+   "_s": {
+    "a": {
+     "margin": 3.6,
+     "pf": 108.2,
+     "pa": 104.6,
+     "gp": 1,
+     "w": 4,
+     "l": 1
+    },
+    "h": {
+     "margin": 14.2,
+     "pf": 123.0,
+     "pa": 108.8,
+     "gp": 1,
+     "w": 5,
+     "l": 0
+    }
+   },
+   "inj": {
+    "OKC": [],
+    "HOU": []
+   },
+   "_odds": null,
+   "market": null,
+   "pre": {
+    "pHome": 0.631,
+    "predMargin": 4.014,
+    "pickSU": "home",
+    "blended": false,
+    "edge": null,
+    "edgeSide": null,
+    "isValue": false,
+    "spreadHome": null,
+    "atsLean": null
    }
   }
  ],
  "mlb": [],
  "stats": {
   "su": [
-   202,
-   159
+   199,
+   158
   ],
   "value": [
    4,
    6
   ],
   "ats": [
-   153,
-   109
+   149,
+   108
   ]
  },
  "recent": [
+  {
+   "lg": "nba",
+   "date": "2026-10-30",
+   "start": "2026-10-30T02:00Z",
+   "away": "MEM",
+   "home": "POR",
+   "awayScore": 124,
+   "homeScore": 103,
+   "winner": "away",
+   "pickSU": "home",
+   "pHome": 0.6913,
+   "suHit": false,
+   "isValue": false,
+   "edge": 0.0171,
+   "edgeSide": "away",
+   "valueHit": null,
+   "spreadHome": -7.5,
+   "atsLean": "away",
+   "atsHit": true
+  },
+  {
+   "lg": "nba",
+   "date": "2026-10-30",
+   "start": "2026-10-30T00:00Z",
+   "away": "SAC",
+   "home": "NO",
+   "awayScore": 120,
+   "homeScore": 132,
+   "winner": "home",
+   "pickSU": "home",
+   "pHome": 0.6372,
+   "suHit": true,
+   "isValue": false,
+   "edge": 0.0027,
+   "edgeSide": "home",
+   "valueHit": null,
+   "spreadHome": -5.3,
+   "atsLean": "away",
+   "atsHit": false
+  },
+  {
+   "lg": "nba",
+   "date": "2026-10-30",
+   "start": "2026-10-30T00:00Z",
+   "away": "CLE",
+   "home": "ATL",
+   "awayScore": 111,
+   "homeScore": 114,
+   "winner": "home",
+   "pickSU": "home",
+   "pHome": 0.5964,
+   "suHit": true,
+   "isValue": false,
+   "edge": null,
+   "edgeSide": null,
+   "valueHit": null,
+   "spreadHome": null,
+   "atsLean": null,
+   "atsHit": null
+  },
   {
    "lg": "nba",
    "date": "2026-10-29",
@@ -1931,69 +2217,77 @@
    "spreadHome": 3.0,
    "atsLean": "home",
    "atsHit": false
-  },
-  {
-   "lg": "nba",
-   "date": "2026-10-23",
-   "start": "2026-10-23T23:00Z",
-   "away": "NY",
-   "home": "BOS",
-   "awayScore": 103,
-   "homeScore": 107,
-   "winner": "home",
-   "pickSU": "home",
-   "pHome": 0.5564,
-   "suHit": true,
-   "isValue": false,
-   "edge": 0.0042,
-   "edgeSide": "home",
-   "valueHit": null,
-   "spreadHome": -2.0,
-   "atsLean": "away",
-   "atsHit": false
-  },
-  {
-   "lg": "nba",
-   "date": "2026-10-22",
-   "start": "2026-10-22T02:00Z",
-   "away": "PHX",
-   "home": "POR",
-   "awayScore": 83,
-   "homeScore": 124,
-   "winner": "home",
-   "pickSU": "home",
-   "pHome": 0.5736,
-   "suHit": true,
-   "isValue": false,
-   "edge": 0.0022,
-   "edgeSide": "home",
-   "valueHit": null,
-   "spreadHome": -2.5,
-   "atsLean": "away",
-   "atsHit": false
-  },
-  {
-   "lg": "nba",
-   "date": "2026-10-22",
-   "start": "2026-10-22T23:00Z",
-   "away": "CLE",
-   "home": "PHI",
-   "awayScore": 106,
-   "homeScore": 114,
-   "winner": "home",
-   "pickSU": "home",
-   "pHome": 0.5792,
-   "suHit": true,
-   "isValue": false,
-   "edge": 0.0077,
-   "edgeSide": "home",
-   "valueHit": null,
-   "spreadHome": -3.0,
-   "atsLean": "away",
-   "atsHit": false
   }
  ],
  "_history": {
+  "nba:401909899": {
+   "lg": "nba",
+   "date": "2026-11-01",
+   "start": "2026-11-01T00:00Z",
+   "away": "SAC",
+   "home": "MEM",
+   "graded": false,
+   "pHome": 0.7658,
+   "predMargin": 8.701,
+   "pickSU": "home",
+   "blended": true,
+   "edge": 0.0143,
+   "edgeSide": "away",
+   "isValue": false,
+   "spreadHome": -10.7,
+   "atsLean": "away"
+  },
+  "nba:401909900": {
+   "lg": "nba",
+   "date": "2026-11-01",
+   "start": "2026-11-01T00:00Z",
+   "away": "CLE",
+   "home": "MIL",
+   "graded": false,
+   "pHome": 0.3127,
+   "predMargin": -5.858,
+   "pickSU": "away",
+   "blended": true,
+   "edge": 0.0536,
+   "edgeSide": "home",
+   "isValue": false,
+   "spreadHome": 8.8,
+   "atsLean": "home"
+  },
+  "nba:401909901": {
+   "lg": "nba",
+   "date": "2026-11-01",
+   "start": "2026-11-01T00:00Z",
+   "away": "MIN",
+   "home": "SA",
+   "graded": false,
+   "pHome": 0.7547,
+   "predMargin": 8.271,
+   "pickSU": "home",
+   "blended": true,
+   "edge": 0.0501,
+   "edgeSide": "away",
+   "isValue": false,
+   "spreadHome": -12.3,
+   "atsLean": "away"
+  },
+  "nba:401909902": {
+   "lg": "nba",
+   "date": "2026-11-01",
+   "start": "2026-11-01T00:30Z",
+   "away": "OKC",
+   "home": "HOU",
+   "graded": false,
+   "pHome": 0.631,
+   "predMargin": 4.014,
+   "pickSU": "home",
+   "blended": false,
+   "edge": null,
+   "edgeSide": null,
+   "isValue": false,
+   "spreadHome": null,
+   "atsLean": null
+  },
   "nba:401909282": {
    "lg": "nba",
    "date": "2026-10-31",
@@ -2079,15 +2373,32 @@
    "spreadHome": 4.4,
    "atsLean": "home"
   },
-  "nba:401909893": {
+  "nba:401909896": {
    "lg": "nba",
-   "date": "2026-10-30",
-   "start": "2026-10-30T00:00Z",
-   "away": "CLE",
-   "home": "ATL",
+   "date": "2026-10-31",
+   "start": "2026-10-31T19:00Z",
+   "away": "POR",
+   "home": "UTAH",
    "graded": false,
-   "pHome": 0.5964,
-   "predMargin": 2.929,
+   "pHome": 0.3651,
+   "predMargin": -4.14,
+   "pickSU": "away",
+   "blended": true,
+   "edge": 0.0348,
+   "edgeSide": "home",
+   "isValue": false,
+   "spreadHome": 6.3,
+   "atsLean": "home"
+  },
+  "nba:401909897": {
+   "lg": "nba",
+   "date": "2026-10-31",
+   "start": "2026-10-31T22:00Z",
+   "away": "PHI",
+   "home": "CHA",
+   "graded": false,
+   "pHome": 0.5327,
+   "predMargin": 0.986,
    "pickSU": "home",
    "blended": false,
    "edge": null,
@@ -2096,13 +2407,53 @@
    "spreadHome": null,
    "atsLean": null
   },
+  "nba:401909898": {
+   "lg": "nba",
+   "date": "2026-10-31",
+   "start": "2026-10-31T23:00Z",
+   "away": "ATL",
+   "home": "NO",
+   "graded": false,
+   "pHome": 0.4396,
+   "predMargin": -1.824,
+   "pickSU": "away",
+   "blended": true,
+   "edge": 0.0277,
+   "edgeSide": "home",
+   "isValue": false,
+   "spreadHome": 4.0,
+   "atsLean": "home"
+  },
+  "nba:401909893": {
+   "lg": "nba",
+   "date": "2026-10-30",
+   "start": "2026-10-30T00:00Z",
+   "away": "CLE",
+   "home": "ATL",
+   "graded": true,
+   "pHome": 0.5964,
+   "predMargin": 2.929,
+   "pickSU": "home",
+   "blended": false,
+   "edge": null,
+   "edgeSide": null,
+   "isValue": false,
+   "spreadHome": null,
+   "atsLean": null,
+   "homeScore": 114,
+   "awayScore": 111,
+   "winner": "home",
+   "suHit": true,
+   "atsHit": null,
+   "valueHit": null
+  },
   "nba:401909894": {
    "lg": "nba",
    "date": "2026-10-30",
    "start": "2026-10-30T00:00Z",
    "away": "SAC",
    "home": "NO",
-   "graded": false,
+   "graded": true,
    "pHome": 0.6372,
    "predMargin": 4.211,
    "pickSU": "home",
@@ -2111,7 +2462,13 @@
    "edgeSide": "home",
    "isValue": false,
    "spreadHome": -5.3,
-   "atsLean": "away"
+   "atsLean": "away",
+   "homeScore": 132,
+   "awayScore": 120,
+   "winner": "home",
+   "suHit": true,
+   "atsHit": false,
+   "valueHit": null
   },
   "nba:401909895": {
    "lg": "nba",
@@ -2119,7 +2476,7 @@
    "start": "2026-10-30T02:00Z",
    "away": "MEM",
    "home": "POR",
-   "graded": false,
+   "graded": true,
    "pHome": 0.6913,
    "predMargin": 5.995,
    "pickSU": "home",
@@ -2128,7 +2485,13 @@
    "edgeSide": "away",
    "isValue": false,
    "spreadHome": -7.5,
-   "atsLean": "away"
+   "atsLean": "away",
+   "homeScore": 103,
+   "awayScore": 124,
+   "winner": "away",
+   "suHit": false,
+   "atsHit": true,
+   "valueHit": null
   },
   "nba:401909277": {
    "lg": "nba",
@@ -10797,167 +11160,6 @@
    "winner": "home",
    "suHit": true,
    "atsHit": true,
-   "valueHit": null
-  },
-  "mlb:401816188": {
-   "lg": "mlb",
-   "date": "2026-07-20",
-   "start": "2026-07-20T22:40Z",
-   "away": "MIN",
-   "home": "CLE",
-   "graded": true,
-   "pHome": 0.4766,
-   "predMargin": -0.264,
-   "pickSU": "away",
-   "blended": true,
-   "edge": 0.0008,
-   "edgeSide": "home",
-   "isValue": false,
-   "spreadHome": 1.5,
-   "atsLean": "home",
-   "homeScore": 13,
-   "awayScore": 4,
-   "winner": "home",
-   "suHit": false,
-   "atsHit": true,
-   "valueHit": null
-  },
-  "mlb:401816187": {
-   "lg": "mlb",
-   "date": "2026-07-20",
-   "start": "2026-07-20T23:00Z",
-   "away": "LAD",
-   "home": "PHI",
-   "graded": true,
-   "pHome": 0.5552,
-   "predMargin": 0.624,
-   "pickSU": "home",
-   "blended": true,
-   "edge": 0.0026,
-   "edgeSide": "away",
-   "isValue": false,
-   "spreadHome": -1.1,
-   "atsLean": "away",
-   "homeScore": 10,
-   "awayScore": 7,
-   "winner": "home",
-   "suHit": true,
-   "atsHit": false,
-   "valueHit": null
-  },
-  "mlb:401816189": {
-   "lg": "mlb",
-   "date": "2026-07-20",
-   "start": "2026-07-20T23:05Z",
-   "away": "PIT",
-   "home": "NYY",
-   "graded": true,
-   "pHome": 0.5194,
-   "predMargin": 0.219,
-   "pickSU": "home",
-   "blended": true,
-   "edge": 0.0073,
-   "edgeSide": "away",
-   "isValue": false,
-   "spreadHome": 0.4,
-   "atsLean": "home",
-   "homeScore": 8,
-   "awayScore": 5,
-   "winner": "home",
-   "suHit": true,
-   "atsHit": true,
-   "valueHit": null
-  },
-  "mlb:401816191": {
-   "lg": "mlb",
-   "date": "2026-07-20",
-   "start": "2026-07-20T23:07Z",
-   "away": "TB",
-   "home": "TOR",
-   "graded": true,
-   "pHome": 0.5566,
-   "predMargin": 0.641,
-   "pickSU": "home",
-   "blended": true,
-   "edge": 0.0078,
-   "edgeSide": "away",
-   "isValue": false,
-   "spreadHome": -1.5,
-   "atsLean": "away",
-   "homeScore": 1,
-   "awayScore": 7,
-   "winner": "away",
-   "suHit": false,
-   "atsHit": true,
-   "valueHit": null
-  },
-  "mlb:401816186": {
-   "lg": "mlb",
-   "date": "2026-07-20",
-   "start": "2026-07-20T23:10Z",
-   "away": "BAL",
-   "home": "BOS",
-   "graded": true,
-   "pHome": 0.5601,
-   "predMargin": 0.68,
-   "pickSU": "home",
-   "blended": true,
-   "edge": 0.0015,
-   "edgeSide": "home",
-   "isValue": false,
-   "spreadHome": -1.5,
-   "atsLean": "away",
-   "homeScore": 6,
-   "awayScore": 5,
-   "winner": "home",
-   "suHit": true,
-   "atsHit": true,
-   "valueHit": null
-  },
-  "mlb:401816190": {
-   "lg": "mlb",
-   "date": "2026-07-20",
-   "start": "2026-07-20T23:15Z",
-   "away": "SD",
-   "home": "ATL",
-   "graded": true,
-   "pHome": 0.573,
-   "predMargin": 0.828,
-   "pickSU": "home",
-   "blended": true,
-   "edge": 0.0033,
-   "edgeSide": "away",
-   "isValue": false,
-   "spreadHome": -1.5,
-   "atsLean": "away",
-   "homeScore": 3,
-   "awayScore": 2,
-   "winner": "home",
-   "suHit": true,
-   "atsHit": true,
-   "valueHit": null
-  },
-  "mlb:401816195": {
-   "lg": "mlb",
-   "date": "2026-07-20",
-   "start": "2026-07-20T23:40Z",
-   "away": "NYM",
-   "home": "MIL",
-   "graded": true,
-   "pHome": 0.6276,
-   "predMargin": 1.465,
-   "pickSU": "home",
-   "blended": true,
-   "edge": 0.004,
-   "edgeSide": "home",
-   "isValue": false,
-   "spreadHome": -1.5,
-   "atsLean": "away",
-   "homeScore": 8,
-   "awayScore": 3,
-   "winner": "home",
-   "suHit": true,
-   "atsHit": false,
    "valueHit": null
   }
  }
